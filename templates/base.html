@@ -1,0 +1,290 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Ultra - App Web</title>
+    <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
+
+	<!-- Morris Charts CSS -->
+    <link href="{% static 'vendors/morris.js/morris.css' %}" rel="stylesheet" type="text/css" />
+
+	<!-- Toastr CSS -->
+    <link href="{% static 'vendors/jquery-toast-plugin/dist/jquery.toast.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Toggles CSS -->
+    <link href="{% static 'vendors/jquery-toggles/css/toggles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendors/jquery-toggles/css/themes/toggles-light.css' %}" rel="stylesheet" type="text/css">
+
+
+     <!-- Data Table CSS -->
+    <link href="{% static 'vendors/datatables.net-dt/css/jquery.dataTables.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'vendors/datatables.net-responsive-dt/css/responsive.dataTables.min.css' %}" rel="stylesheet" type="text/css" />
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap Dropzone CSS -->
+    <link href="{% static 'vendors/dropzone/dist/dropzone.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Bootstrap Dropzone CSS -->
+    <link href="{% static 'vendors/dropify/dist/css/dropify.min.css' %}" rel="stylesheet" type="text/css"/>
+
+    <!-- Toggles CSS -->
+    <link href="{% static 'vendors/jquery-toggles/css/toggles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'vendors/jquery-toggles/css/themes/toggles-light.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="dist/css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+
+<!-- HK Wrapper -->
+	<div class="hk-wrapper hk-alt-nav hk-icon-nav">
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-expand-xl navbar-light fixed-top hk-navbar hk-navbar-alt">
+            <a class="navbar-toggle-btn nav-link-hover navbar-toggler" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarCollapseAlt" aria-controls="navbarCollapseAlt" aria-expanded="false" aria-label="Toggle navigation"><span class="feather-icon"><i data-feather="menu"></i></span></a>
+            <a class="navbar-brand text-red" href="index.php">
+                Ultra
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarCollapseAlt">
+                <ul class="navbar-nav">
+                </li>
+                    <li class="nav-item dropdown show-on-hover active">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Gestion
+                            </a>
+                        <div class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <div class="sub-dropdown-menu show-on-hover">
+                                <a href="#" class="dropdown-toggle dropdown-item">Usuarios</a>
+                                <div class="dropdown-menu open-right-side">
+                                    <a class="dropdown-item" href="gestion-producto.php">Registrar</a>
+                                    <a class="dropdown-item" href="buscar-usuario.php">Buscar</a>
+                                </div>
+                            </div>
+                            <div class="sub-dropdown-menu show-on-hover">
+                                <a href="#" class="dropdown-toggle dropdown-item">Tenderos</a>
+                                <div class="dropdown-menu open-right-side">
+                                    <a class="dropdown-item" href="gestion-tenderos.php">Registrar</a>
+                                    <a class="dropdown-item" href="buscar-tendero.php">Buscar</a>
+                                    <a class="dropdown-item" href="gestion-denuncia.php">Gestión de denuncia</a>
+                                </div>
+                            </div>
+                            <div class="sub-dropdown-menu show-on-hover">
+                                <a href="#" class="dropdown-toggle dropdown-item">Productos</a>
+                                <div class="dropdown-menu open-right-side">
+                                    <a class="dropdown-item" href="gestion-producto.php">Registrar</a>
+                                    <a class="dropdown-item" href="buscar-producto.php">Buscar</a>
+                                    <a class="dropdown-item" href="gestion-denuncia.php">Gestión de denuncia</a>
+                                </div>
+                            </div>
+                            <div class="sub-dropdown-menu show-on-hover">
+                                <a href="#" class="dropdown-toggle dropdown-item">Denuncias</a>
+                                <div class="dropdown-menu open-right-side">
+                                    <a class="dropdown-item" href="#">Tenderos</a>
+                                    <a class="dropdown-item" href="#">Productos</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="nav-item dropdown show-on-hover active">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categorías</a>
+                        <div class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <a class="dropdown-item" href="sexo.php">Sexo</a>
+                            <a class="dropdown-item" href="clases.php">Clases</a>
+                            <a class="dropdown-item" href="tiendas.php">Tiendas</a>
+                             <a class="dropdown-item" href="situacion.php">Situación</a>
+                            <a class="dropdown-item" href="modalidad.php">Modalidad</a>
+                            <a class="dropdown-item" href="nacionalidad.php">Nacionalidad</a>
+                            <a class="dropdown-item" href="procesos.php">Tipo de proceso</a>
+                            <a class="dropdown-item" href="involucrados.php">Tipos de involucrados</a>
+                        </div>
+                    </li>
+                     <li class="nav-item dropdown show-on-hover active">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Seguimiento legal </a>
+
+                        <div class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <a class="dropdown-item" href="seguimiento-legal-denuncias.php">Denuncias</a>
+                            <a class="dropdown-item" href="Seguimiento-legal-intervenciones.php">Intervenciones</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown show-on-hover active">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Reportes </a>
+
+                        <div class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                            <a class="dropdown-item" href="reporte-usuario.php">Usuarios</a>
+                            <a class="dropdown-item" href="reporte-inventario.php">Inventario</a>
+                            <a class="dropdown-item" href="reporte-denuncias.php">Denuncias</a>
+                            <a class="dropdown-item" href="reporte-tendero.php">Tenderos</a>
+                            <a class="dropdown-item" href="reporte-intervenciones.php">Intervenciones</a
+
+                        </div>
+                    </li>
+
+
+                </ul>
+                <form class="navbar-search-alt">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><span class="feather-icon"></span></span>
+                        </div>
+                        <input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+                    </div>
+                </form>
+            </div>
+            <ul class="navbar-nav hk-navbar-content">
+                <li class="nav-item">
+                    <a id="settings_toggle_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="settings"></i></span></a>
+                </li>
+
+                <li class="nav-item dropdown dropdown-authentication">
+                    <a class="nav-link dropdown-toggle no-caret" href="backup.php" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="media">
+                            <div class="media-img-wrap">
+                                <div class="avatar">
+                                    <img src="{% static '/img/avatar5.jpg" alt="user" class="avatar-img rounded-circle">
+                                </div>
+                                <span class="badge badge-success badge-indicator"></span>
+                            </div>
+                            <div class="media-body">
+                                <span>Aash Bill<i class="zmdi zmdi-chevron-down"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
+                        <a class="dropdown-item" href="gestion-usuario.php"><i class="dropdown-icon zmdi zmdi-account"></i><span>Mi perfil</span></a>
+                        <a class="dropdown-item" href="entradas.php"><i class="dropdown-icon zmdi zmdi-card"></i><span>Mi entradas</span></a>
+
+                        <a class="dropdown-item" href="backup.php"><i class="dropdown-icon zmdi zmdi-settings"></i><span>Backup & Restore</span></a>
+                        <div class="dropdown-divider"></div>
+                        <div class="sub-dropdown-menu show-on-hover">
+                            <a href="#" class="dropdown-toggle dropdown-item no-caret"><i class="zmdi zmdi-check text-success"></i>Online</a>
+                            <div class="dropdown-menu open-left-side">
+                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-check text-success"></i><span>Online</span></a>
+                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-circle-o text-warning"></i><span>Ocupado</span></a>
+                                <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-minus-circle-outline text-danger"></i><span>Offline</span></a>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-power"></i><span>Salir</span></a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- /Top Navbar -->
+
+
+
+        <!-- Main Content -->
+        <div class="hk-pg-wrapper">
+            <!-- Container -->
+            <div class="container mt-xl-50 mt-sm-30 mt-15">
+                {% block content %}
+                {% endblock content%}
+            </div>
+            <!-- /Container -->
+
+            <div class="hk-footer-wrap container">
+                <footer class="footer">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <p>Diseñado y Desarrollado por<a href="https://BeeDesign.pe/" class="text-dark" target="_blank">BeeDesign</a> © 2019</p>
+                        </div>
+
+                    </div>
+                </footer>
+            </div>
+                <!-- /Footer -->
+        </div>
+            <!-- /Main Content -->
+
+    </div>
+    <!-- /HK Wrapper -->
+
+    <!-- jQuery -->
+    <script src ="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src ="{% static 'vendors/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src ="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+    <!-- Slimscroll JavaScript -->
+    <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="{% static 'js/dropdown-bootstrap-extended.js' %}"></script>
+
+    <!-- FeatherIcons JavaScript -->
+    <script src="{% static 'js/feather.min.js' %}"></script>
+
+    <!-- Toggles JavaScript -->
+    <script src ="{% static 'vendors/jquery-toggles/toggles.min.js' %}"></script>
+    <script src="{% static 'js/toggle-data.js' %}"></script>
+	
+	<!-- Counter Animation JavaScript -->
+	<script src ="{% static 'vendors/waypoints/lib/jquery.waypoints.min.js' %}"></script>
+	<script src ="{% static 'vendors/jquery.counterup/jquery.counterup.min.js' %}"></script>
+	
+	<!-- Easy pie chart JS -->
+    <script src ="{% static 'vendors/easy-pie-chart/dist/jquery.easypiechart.min.js' %}"></script>
+	
+	<!-- Sparkline JavaScript -->
+    <script src ="{% static 'vendors/jquery.sparkline/dist/jquery.sparkline.min.js' %}"></script>
+	
+	<!-- Morris Charts JavaScript -->
+    <script src ="{% static 'vendors/raphael/raphael.min.js' %}"></script>
+    <script src ="{% static 'vendors/morris.js/morris.min.js' %}"></script>
+   
+	<!-- EChartJS JavaScript -->
+    <script src ="{% static 'vendors/echarts/dist/echarts-en.min.js' %}"></script>
+    
+	<!-- Peity JavaScript -->
+    <script src ="{% static 'vendors/peity/jquery.peity.min.js' %}"></script>
+   
+	<!-- Toastr JS -->
+    <script src ="{% static 'vendors/jquery-toast-plugin/dist/jquery.toast.min.js' %}"></script>
+    
+    <!-- Init JavaScript -->
+    <!--<script src="{% static '/js/init.js' %}"></script>
+	 <script src="{% static '/js/dashboard-data.js' %}"></script> -->
+    
+    <!-- Dropzone JavaScript -->
+    <script src ="{% static 'vendors/dropzone/dist/dropzone.js' %}"></script>
+    
+    <!-- Dropify JavaScript -->
+    <script src ="{% static 'vendors/dropify/dist/js/dropify.min.js' %}"></script>
+    
+    <!-- Form Flie Upload Data JavaScript -->
+    <script src="{% static '/js/form-file-upload-data.js' %}"></script>
+    
+    <!-- FeatherIcons JavaScript -->
+    <script src="{% static '/js/feather.min.js' %}"></script>
+    
+    <!-- Toggles JavaScript -->
+    <script src ="{% static 'vendors/jquery-toggles/toggles.min.js' %}"></script>
+    <!--<script src="{% static '/js/toggle-data.js' %}"></script>-->
+
+    <!-- Data Table JavaScript -->
+    <script src ="{% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src ="{% static 'vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src ="{% static 'vendors/datatables.net-dt/js/dataTables.dataTables.min.js' %}"></script>
+    <script src ="{% static 'vendors/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src ="{% static 'vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src ="{% static 'vendors/datatables.net-buttons/js/buttons.flash.min.js' %}"></script>
+    <script src ="{% static 'vendors/jszip/dist/jszip.min.js' %}"></script>
+    <script src ="{% static 'vendors/pdfmake/build/pdfmake.min.js' %}"></script>
+    <script src ="{% static 'vendors/pdfmake/build/vfs_fonts.js' %}"></script>
+    <script src ="{% static 'vendors/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src ="{% static 'vendors/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+    <script src ="{% static 'vendors/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static '/js/dataTables-data.js' %}"></script>
