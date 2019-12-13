@@ -1,0 +1,251 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+            <h5 class="hk-sec-title">Gestión de denuncias</h5>
+            
+
+            <hr>
+
+                    <h6 class="form-group">Datos de los tendero(s) involucrado(s)</h6>
+            <div class="row">
+                <div class="col-sm">
+                    <form>
+                        <div class="row">
+                         
+                        <div class="col-md-12 form-group">
+                            <label for="pregunta">Seleccionar/ Gestionar tendero(s)</label>
+                           
+                        </div>
+
+                        <div class="col-sm">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                        Pulse aquí para seleccionar/ Gesionar los tenderos (s)
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                   Selección de tendero(s) involucrados
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                <div class="row">
+                <div class="col-sm">
+                    <div class="row mb-30">
+                        <div class="col-sm">
+                            
+                                <form>
+                                    <div class="input-group d-inline-flex">
+                                        <input class="form-control" type="search" placeholder="Ingrese el nombre/ DNI del tendero" aria-label="Search">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-purple" type="submit">Buscar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                        
+                        </div>
+                    </div>
+                    
+                
+                </div>
+            </div>
+            <h5 class="hk-sec-title">Todos los usuarios del sistema</h5>
+            
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap mb-5">
+                     <div class="table-responsive">
+                        <table id="datable_1" class="table mb-0">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Nombre completo</th>
+                                    <th>DNI</th>
+                                    <th>Remover</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Maria Gonzalez</td>
+                                    <td>V-34.554.444</td>
+                                    
+                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
+                                </tr>
+                               
+                                
+                               
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+                                   
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar ventana</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 form-group">
+                            
+                            <textarea class="form-control mt-15" rows="3" placeholder="Narrar los echos" ></textarea>
+                        </div>
+
+               
+                        
+
+                        </div>
+
+        
+        
+            
+                </div>
+            </div>
+                       
+                       
+                        <hr>
+
+                       <h6 class="form-group">Datos de la tienda, productos(s) y otros</h6>
+            <div class="row">
+                <div class="col-sm">
+                    <form>
+                        <div class="row">
+                         
+                        <div class="col-md-12 form-group">
+                            <label for="pregunta">Seleccionar el/ los producto(s)</label>
+                           
+                        </div>
+
+                        <div class="col-sm">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal1">
+                        Pulse aquí para seleccionar el/ los productos(s)
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Selección de productos</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                <div class="col-sm">
+                    <div class="row mb-30">
+                        <div class="col-sm">
+                            
+            
+                                <form>
+                                    <div class="input-group d-inline-flex">
+                                        <input class="form-control" type="search" placeholder="Ingrese el nombre/ Código del producto" aria-label="Search">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-purple" type="submit">Buscar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                        
+                        </div>
+                    </div>
+                    
+                
+                </div>
+            </div>
+            <h5 class="hk-sec-title">Involucrados Seleccionados</h5>
+            
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap mb-5">
+                     <div class="table-responsive">
+                        <table id="datable_1" class="table mb-0">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Código</th>
+                                    <th>Cantidad</th>
+                                    <th>P/U</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Producto</td>
+                                    <td>02223</td>
+                                    <td>01</td>
+                                    <td>pu</td>                                                    
+                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
+                                </tr>
+                                
+                                
+                                
+                               
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar ventana</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 form-group">
+
+                 <div class="col-md-12 form-group">
+                            <label for="tienda">Seleccionar la tienda</label>
+                                <select class="form-control custom-select d-block w-100" id="tienda">
+                                    <option value="">Seleccionar... </option>
+                                    <option>(PVEA - CHINCHA) RESPOSABLE: SIN INFORMACIÓN</option>
+                                </select>
+                           </div>
+                           <div class="col-md-12 form-group">
+                            <label for="modalidad">Modalidad</label>
+                                <select class="form-control custom-select d-block w-100" id="modalidad">
+                                    <option value="">Seleccionar... </option>
+                                    <option>BOLSA BIONICA</option>
+                                </select>
+                           </div>
+                           <div class="col-md-12 form-group">
+                            <label for="clase">Clase</label>
+                                <select class="form-control custom-select d-block w-100" id="clase">
+                                    <option value="">Seleccionar... </option>
+                                    <option>DESHONESTO</option>
+                                </select>
+                           </div>
+                            
+                            
+                </div>
+
+
+                        
+                    </form>
+                </div>
+            </div>
+        </section>
+{% endblock %}

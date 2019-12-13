@@ -1,0 +1,90 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+            <h5 class="hk-sec-title">Registro de Tenderos</h5>
+            <p class="mb-25"><strong>(*)</strong> Datos Obligatorios. <strong>Formatos soportado:</strong> .jpg y .png - <strong>Tamaño recomendado:</strong> 1 MB 720px - <strong>Notas:</strong> Todos los valores se guardaran en mayusculas para mantener un solo formato uniforme.</p>
+
+            <hr>
+
+                        <h6 class="form-group">Datos del tendero</h6>
+            <div class="row">
+                <div class="col-sm">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label for="nombre">Nombres</label>
+                                <input class="form-control" id="nombre" placeholder="Ingrese su nombres" type="text">
+                                
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="apellido">Apellidos</label>
+                                <input class="form-control" id="apellido" placeholder="Ingrese su apellidos" type="text">
+                           </div>
+                           <div class="col-md-6 form-group">
+                            <label for="country">Nacionalidad</label>
+                                <select class="form-control custom-select d-block w-100" id="country">
+                                    <option value="">Seleccionar... </option>
+                                    <option>Peruana</option>
+                                </select>
+                           </div>
+
+                           <div class="col-md-6 form-group">
+                                <label for="dni">DNI</label>
+                                <input class="form-control" id="dni" placeholder="Ingrese su DNI" type="text">
+                           </div>
+                            <div class="col-md-12 form-group">
+                            <label for="country">Sexo</label>
+                                <select class="form-control custom-select d-block w-100" id="country">
+                                    <option value="">Seleccionar... </option>
+                                    <option>Masculino</option>
+                                    <option>Femenino</option>
+                                </select>
+                           </div>
+
+                        
+
+                        </div>
+
+        
+                       
+                       
+                        <hr>
+
+                        <h6 class="form-group">Otros datos</h6>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                            <label for="country">Tipo</label>
+                                <select class="form-control custom-select d-block w-100" id="country">
+                                    <option value="">Seleccionar... </option>
+                                    <option>Externo</option>
+                                    
+                                </select>
+                           </div>
+                           <div class="col-md-6 form-group">
+                                <label for="Telefono">Telefono</label>
+                                <input class="form-control" id="Telefono" placeholder="Ingrese su telefono" type="text">
+                           </div>
+
+                           <div class="col-md-12 form-group">
+                                <label for="direccion">Dirección</label>
+                                <input class="form-control" id="direccion" placeholder="Ingrese su dirección" type="text">
+                           </div>
+                        </div>
+                          <label>Foto de Perfil</label>
+            <div  class="row">
+                <div class="col-sm">
+                    <input type="file" id="input-file-now" class="dropify" />
+                </div>
+            </div>
+
+                        <hr>
+                        <button class="btn btn-danger" type="submit">Guardar información del tendero</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+{% endblock %}
