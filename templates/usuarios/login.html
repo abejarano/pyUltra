@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Web Application Ultra</title>
+
+    {% include '../elements/style.html' %}
+
+
+</head>
+<body>
+
+<div class="hk-wrapper hk-alt-nav hk-icon-nav">
+    <div class="hk-pg-wrapper">
+        <div class="container mt-xl-50 mt-sm-30 mt-15">
+            <div class="row">
+                <div class="col-xl-12">
+                    <section class="hk-sec-wrapper">
+                        <h5 class="hk-sec-title text-center">Bienvenido</h5>
+
+                        <hr>
+                        <form class="form-login p-5 mt-3" method="post">
+                            <div class="form-group">
+                                <label class="">Usuario</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="">Contraseña</label>
+                                <input type="password" class="form-control">
+                            </div>
+                            <button class="btn btn-primary btn-md btn-block">Ingregar</button>
+                            {% csrf_token %}
+                        </form>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,4 +1,13 @@
 @charset "UTF-8";
+
+
+.form-login {
+  border-radius: 6px;
+  border:1px solid #ccc;
+  width: 640px;
+  position: relative;
+  margin: 0 auto;
+}
 /*------------------------------------------------------------------
 [Master Stylesheet]
 Project:	scrooge

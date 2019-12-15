@@ -1,5 +1,98 @@
 {% extends '../base.html' %}
 
 {% block content %}
+<!-- Title -->
+                <div class="hk-pg-header align-items-top">
+                    <div>
+                        <h2 class="hk-pg-title font-weight-600 mb-10">Categorías</h2>
 
+                    </div>
+                    <div class="d-flex">
+                        <button class="btn btn-sm btn-outline-light btn-wth-icon icon-wthot-bg mr-15 mb-15"><span class="icon-label"><i class="fa fa-envelope-o"></i> </span><span class="btn-text">Enviar al correo </span></button>
+                        <button class="btn btn-sm btn-outline-light btn-wth-icon icon-wthot-bg mr-15 mb-15"><span class="icon-label"><i class="fa fa-print"></i> </span><span class="btn-text">Imprimir </span></button>
+                        <button class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15"><span class="icon-label"><i class="fa fa-download"></i> </span><span class="btn-text">Exportar </span></button>
+                    </div>
+                </div>
+                <!-- /Title -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <section class="hk-sec-wrapper">
+                          <h5 class="hk-sec-title">Tiendas</h5>
+                            <p class="mb-25"><strong>(*) Datos Obligatorio, Nota:</strong> Todos los valores se guardaran en mayusculas para mantener un solo formato uniforme.</p>
+                            <hr>
+                                <form class="form-inline">
+                                    <div class="col-auto">
+                                       <label for="clases">Tienda</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <label class="sr-only" for=tienda>Tiendas</label>
+                                        <input type="text" class="form-control mb-2" id="tienda" placeholder="Agregar tienda">
+                                    </div>
+                                    <div class="col-auto">
+                                       <label for="clases">Propietario</label>
+                                    </div>
+                                    <div class="col-auto">
+                                        <label class="sr-only" for="Propietario">Propietario</label>
+                                        <input type="text" class="form-control mb-2" id="Propietario" placeholder="Agregar Propietario">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-danger mb-2">Guardar</button>
+                                    </div>
+                                    </form>
+                                    <hr>
+                            <h5 class="hk-sec-title">Lista de categorías tiendas</h5>
+
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="table-wrap mb-5">
+                                     <div class="table-responsive">
+                                        <table id="datable_1" class="table mb-0">
+                                            <thead class="thead-dark">
+                                                <tr>
+
+                                                    <th>Tiendas</th>
+                                                    <th>Propietarios</th>
+                                                    <th>Editar</th>
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+
+                                                    <td>PVEA-CHINCHA</td>
+                                                    <td>SIN INFORMACIÓN</td>
+                                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
+                                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td>PVEA-IZAGUARR</td>
+                                                    <td>SIN INFORMACIÓN</td>
+                                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></i></i></span></button></td>
+                                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td>PVEA-ATE</td>
+                                                    <td>SIN INFORMACIÓN</td>
+                                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
+                                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
+                                                </tr>
+                                                 <tr>
+                                                    <td>PVEA-MIRAFLORES</td>
+                                                    <td>SIN INFORMACIÓN</td>
+                                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
+                                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </section>
+
+                    </div>
 {% endblock %}
