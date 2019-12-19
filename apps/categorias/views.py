@@ -1,19 +1,39 @@
 from django.shortcuts import render
 
 # Create your views here.
+from .models import *
 from django.views.generic import TemplateView
-
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from .forms import *
 
 class ClasesListado(TemplateView):
     template_name = 'categorias/clases-listado.html'
 
-class ClasesRegistrar(TemplateView):
+class ClasesRegistrar(CreateView):
+    model = Clases
     template_name = 'categorias/clases-registrar.html'
+    success_url = '/categorias/clases/listado'
+    form_class = FormClases
 
-class ModalidadListado(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super(ClasesRegistrar, self).get_context_data(**kwargs)
+        context['action'] = 'registrar'
+
+        return context
+
+class ModalidadRegitrar(CreateView):
+    model = Modalidades
+    form_class = FormModalidades
+    success_url = '/categorias/modalidades/listado'
     template_name = 'categorias/modalidad-listado.html'
 
-class ModalidadRegitrar(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super(ClasesRegistrar, self).get_context_data(**kwargs)
+        context['action'] = 'registrar'
+
+        return context
+
+class ModalidadListado(TemplateView):
     template_name = 'categorias/modalidad-registrar.html'
 
 class NacionalidadesListado(TemplateView):
