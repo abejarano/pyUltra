@@ -73,6 +73,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ultra.wsgi.application'
 
+LOGIN_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

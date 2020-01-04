@@ -1,9 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('', Login.as_view()),
-    # path('home', Home.as_view()),
-    path('registrar', Usuario_Registro.as_view()),
-    path('listado', Usuario_Listado.as_view())
+    path('login', iniciar_sesion),
+    path('registrar', login_required(Usuario_Registro.as_view())),
+    path('listado', login_required(Usuario_Listado.as_view())),
 ]

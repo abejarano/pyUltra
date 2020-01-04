@@ -1,13 +1,14 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('tenedores/registrar', TenedoresRegistrar.as_view()),
-    path('tenedores/listado', TenedoresListado.as_view()),
+    path('tenedores/registrar', login_required(TenedoresRegistrar.as_view())),
+    path('tenedores/listado', login_required(TenedoresListado.as_view())),
 
-    path('productos/registrar', ProductosRegistrar.as_view()),
-    path('productos/listado', ProductosListado.as_view()),
+    path('productos/registrar', login_required(ProductosRegistrar.as_view())),
+    path('productos/listado', login_required(ProductosListado.as_view())),
 
-    path('denuncias/registrar', DenunciasRegistrar.as_view()),
-    path('denuncias/listado', DenunciasListado.as_view()),
+    path('denuncias/registrar', login_required(DenunciasRegistrar.as_view())),
+    path('denuncias/listado', login_required(DenunciasListado.as_view())),
 ]

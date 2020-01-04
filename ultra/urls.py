@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from apps.usuarios.views import Index
 
 urlpatterns = [
+    path('', Index),
     path('usuarios/', include('apps.usuarios.urls')),
     path('categorias/', include('apps.categorias.urls')),
     path('gestion/', include('apps.gestion.urls')),
