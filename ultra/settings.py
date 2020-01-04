@@ -100,12 +100,12 @@ else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'db_ultra',
-            'USER': 'root',
-            'PASSWORD': 'mysql',
-            'HOST': 'localhost',
-            'PORT': '3306',
+            'USER': 'usr_kapture',
+            'PASSWORD': '1qaz2wsx!P@ssw0rd2020:2019',
+            'HOST': '159.69.123.95',
+            'PORT': 5432,
         }
     }
 
