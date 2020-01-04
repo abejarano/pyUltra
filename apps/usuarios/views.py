@@ -1,11 +1,11 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
 # Create your views here.
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView, CreateView, ListView, DeleteView
 
 from apps.usuarios.forms import UserCreateForm
 
@@ -37,6 +37,10 @@ def iniciar_sesion(request):
         else:
             return False
 
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('/')
+
 
 class Usuario_Registro(CreateView):
     model = User
@@ -46,11 +50,15 @@ class Usuario_Registro(CreateView):
 
     def form_valid(self, form):
         usuario = form.save(commit=False)
-        usuario.is_staff = True
         usuario.save()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/usuarios/listado')
 
 class Usuario_Listado(ListView):
     model = User
     template_name = 'usuarios/listado.html'
     paginate_by = 20
+
+class Usuario_Eliminar(DeleteView):
+    model = User
+    template_name = 'usuarios/eliminar.html'
+    success_url = '/usuarios/listado'
