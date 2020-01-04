@@ -9,20 +9,17 @@ from django.views.generic import TemplateView, CreateView, ListView
 
 from apps.usuarios.forms import UserCreateForm
 
-
-class Home(TemplateView):
-    template_name = 'home.html'
-
 def Index(request):
     if request.user.is_authenticated:
-        return render(request, 'base.html')
+        return render(request, 'home.html')
     else:
         if request.method == 'POST':
+
             if iniciar_sesion(request):
                 if request.GET:
                     return HttpResponseRedirect(request.GET.get('next'))
                 else:
-                    return render(request, 'base.html')
+                    return HttpResponseRedirect('/')
             else:
                 messages.add_message(request, messages.INFO, 'Hello world.')
 
@@ -31,6 +28,7 @@ def Index(request):
 def iniciar_sesion(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
+
     user = authenticate(username=username, password=password)
     if user is not None:
         if user.is_active:
@@ -38,12 +36,6 @@ def iniciar_sesion(request):
             return True
         else:
             return False
-
-class Login(TemplateView):
-    template_name = 'usuarios/login.html'
-
-    def post(self, request, *args, **kwargs):
-        return redirect('/home')
 
 
 class Usuario_Registro(CreateView):
