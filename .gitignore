@@ -25,3 +25,4 @@ settings.py
 *.sublime-workspace
 .DS_Store
 Thumbs.db
+/contenedores/

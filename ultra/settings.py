@@ -73,42 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ultra.wsgi.application'
 
-LOGIN_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-if DEV:
-    print('Development Environment')
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static'),
-
-    ]
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'db_ultra',
-            'USER': 'root',
-            'PASSWORD': 'mysql',
-            'HOST': 'localhost',
-            'PORT': '3306',
-        }
-    }
-
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'db_ultra',
-            'USER': 'usr_kapture',
-            'PASSWORD': '1qaz2wsx!P@ssw0rd2020:2019',
-            'HOST': '159.69.123.95',
-            'PORT': 5432,
-        }
-    }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -146,3 +110,42 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'contenedores')
+
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+if DEV:
+    print('Development Environment')
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static'),
+    ]
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'db_ultra',
+            'USER': 'root',
+            'PASSWORD': 'mysql',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
+    }
+
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'db_ultra',
+            'USER': 'usr_kapture',
+            'PASSWORD': '1qaz2wsx!P@ssw0rd2020:2019',
+            'HOST': '159.69.123.95',
+            'PORT': 5432,
+        }
+    }

@@ -3,8 +3,10 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('tenedores/registrar', login_required(TenedoresRegistrar.as_view())),
-    path('tenedores/listado', login_required(TenedoresListado.as_view())),
+    path('tenderos/registrar', login_required(TenderosRegistrar.as_view())),
+    path('tenderos/listado', login_required(TenderosListado.as_view())),
+    path('tenderos/<pk>/editar', login_required(TenderosEditar.as_view())),
+    path('tenderos/<pk>/eliminar', login_required(TenderosEliminar.as_view())),
 
     path('productos/registrar', login_required(ProductosRegistrar.as_view())),
     path('productos/listado', login_required(ProductosListado.as_view())),
