@@ -13,10 +13,9 @@
                                 <div class="row">
                                     <div class="col-10">
                                         <div class="input-group d-inline-flex">
-                                            <input class="form-control" type="search" placeholder="Ingrese el ID del usuario, E-mail a buscar" aria-label="Search">
+                                            <input class="form-control" type="search" name="buscar" placeholder="Ingrese el DNI del usuario, Nombre a buscar" aria-label="Search">
                                             <div class="input-group-append">
                                                 <button class="btn btn-purple" type="submit">Buscar</button>
-
                                             </div>
                                         </div>
                                     </div>
@@ -51,7 +50,6 @@
                                     <th>DNI</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
-                                    <th>Correo</th>
                                     <th>Ver</th>
                                     <th>Imprimir</th>
                                     <th>Eliminar</th>
@@ -68,9 +66,6 @@
                                     </td>
                                     <td>
                                         {{object.apellido}}
-                                    </td>
-                                    <td>
-                                        {{object.correo}}
                                     </td>
                                     <td>
                                         <a href="/gestion/tenderos/{{object.id}}/editar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">

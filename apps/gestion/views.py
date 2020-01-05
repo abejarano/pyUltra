@@ -9,6 +9,13 @@ class TenderosListado(ListView):
     paginate_by = 20
     model = Tenderos
 
+    def get_queryset(self, **kwargs):
+        queryset = self.model.objects.all()
+        if 'buscar' in self.request.GET:
+            queryset = queryset.filter(dni__icontains=self.request.GET['buscar']) | queryset.filter(nombre__icontains=self.request.GET['buscar'])
+
+        return queryset
+
 class TenderosRegistrar(CreateView):
     model = Tenderos
     form_class = FormTenderos
