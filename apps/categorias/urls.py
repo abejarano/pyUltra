@@ -5,8 +5,12 @@ from .views import *
 urlpatterns = [
     path('clases/listado', login_required(ClasesListado.as_view())),
     path('clases/registrar', login_required(ClasesRegistrar.as_view())),
+    path('clases/<pk>/eliminar', login_required(ClasesEliminar.as_view())),
+    path('clases/<pk>/editar', login_required(ClasesEditar.as_view())),
+
     path('modalidades/listado', login_required(ModalidadListado.as_view())),
     path('modalidades/registrar', login_required(ModalidadRegitrar.as_view())),
+
     path('nacionalidades/listado', login_required(NacionalidadesListado.as_view())),
     path('nacionalidades/registrar', login_required(NacionalidadesRegistrar.as_view())),
     path('situaciones/listado', login_required(SituacionesListado.as_view())),

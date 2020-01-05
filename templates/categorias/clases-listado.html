@@ -16,8 +16,7 @@
                 Nuevo
             </span>
         </a>
-        <button class="btn btn-sm btn-outline-light btn-wth-icon icon-wthot-bg mr-15 mb-15"><span class="icon-label"><i class="fa fa-print"></i> </span><span class="btn-text">Imprimir </span></button>
-        <button class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15"><span class="icon-label"><i class="fa fa-download"></i> </span><span class="btn-text">Exportar </span></button>
+
     </div>
 </div>
 <!-- /Title -->
@@ -25,7 +24,7 @@
 <div class="row">
     <div class="col-xl-12">
         <section class="hk-sec-wrapper">
-            <h5 class="hk-sec-title">clases</h5>
+            <h5 class="hk-sec-title">Clases</h5>
             <p class="mb-25"><strong>(*) Datos Obligatorio, Nota:</strong> Todos los valores se guardaran en mayusculas para mantener un solo formato uniforme.</p>
             <hr>
                 <form class="form-inline">
@@ -57,29 +56,25 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for object in object_list %}
                                 <tr>
-
-                                    <td>DESHONESTO</td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
+                                    <td>{{object.nombre}}</td>
+                                    <td>
+                                            <a href="/categorias/clases/{{object.id}}/editar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                                <span class="btn-icon-wrap">
+                                                    <i class="fa fa-search"></i>
+                                                </span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/categorias/clases/{{object.id}}/eliminar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                                <span class="btn-icon-wrap">
+                                                    <i class="fa fa-trash"></i>
+                                                </span>
+                                            </a>
+                                        </td>
                                 </tr>
-                                <tr>
-
-                                    <td>OPORTUNISTA</td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></i></i></span></button></td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
-                                </tr>
-                                <tr>
-
-                                    <td>REINCIDENTE</td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
-                                </tr>
-                                    <tr>
-                                    <td>NO ESPECIFICAR</td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
 
                         </table>

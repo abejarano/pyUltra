@@ -2,12 +2,25 @@ from django.shortcuts import render
 
 # Create your views here.
 from .models import *
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from .forms import *
 
-class ClasesListado(TemplateView):
+class ClasesListado(ListView):
     template_name = 'categorias/clases-listado.html'
+    paginate_by = 20
+    model = Clases
+
+class ClasesEliminar(DeleteView):
+    model = Clases
+    template_name = 'categorias/clases-eliminar.html'
+    success_url = '/categorias/clases/listado'
+
+class ClasesEditar(UpdateView):
+    model = Clases
+    form_class = FormClases
+    template_name = 'categorias/clases-registrar.html'
+    success_url = '/categorias/clases/listado'
 
 class ClasesRegistrar(CreateView):
     model = Clases
