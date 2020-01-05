@@ -18,9 +18,10 @@ urlpatterns = [
     path('situaciones/<pk>/eliminar', login_required(SituacionesEliminar.as_view())),
     path('situaciones/<pk>/editar', login_required(SituacionesEditar.as_view())),
 
-
     path('modalidades/listado', login_required(ModalidadListado.as_view())),
     path('modalidades/registrar', login_required(ModalidadRegitrar.as_view())),
+    path('modalidades/<pk>/eliminar', login_required(ModalidadEliminar.as_view())),
+    path('modalidades/<pk>/editar', login_required(ModalidadEditar.as_view())),
 
     path('nacionalidades/listado', login_required(NacionalidadesListado.as_view())),
     path('nacionalidades/registrar', login_required(NacionalidadesRegistrar.as_view())),

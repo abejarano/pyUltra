@@ -38,16 +38,29 @@ class ModalidadRegitrar(CreateView):
     model = Modalidades
     form_class = FormModalidades
     success_url = '/categorias/modalidades/listado'
+    template_name = 'categorias/modalidad-registrar.html'
+
+class ModalidadEditar(UpdateView):
+    model = Modalidades
+    form_class = FormModalidades
+    success_url = '/categorias/modalidades/listado'
+    template_name = 'categorias/modalidad-registrar.html'
+
+class ModalidadListado(ListView):
+    paginate_by = 20
+    model = Modalidades
     template_name = 'categorias/modalidad-listado.html'
 
+class ModalidadEliminar(DeleteView):
+    model = Modalidades
+    template_name = 'eliminar.html'
+    success_url = '/categorias/modalidades/listado'
+
     def get_context_data(self, **kwargs):
-        context = super(ClasesRegistrar, self).get_context_data(**kwargs)
-        context['action'] = 'registrar'
+        context = super(ModalidadEliminar, self).get_context_data(**kwargs)
+        context['url_return'] = '/categorias/modalidades/listado'
 
         return context
-
-class ModalidadListado(TemplateView):
-    template_name = 'categorias/modalidad-registrar.html'
 
 class NacionalidadesListado(TemplateView):
     template_name = 'categorias/nacionalidades-listado.html'
