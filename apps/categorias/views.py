@@ -61,11 +61,30 @@ class SituacionesListado(TemplateView):
 class SituacionesRegistrar(TemplateView):
     template_name = 'categorias/situaciones-registrar.html'
 
-class TiendasListado(TemplateView):
+class TiendasListado(ListView):
     template_name = 'categorias/tiendas-listado.html'
+    model = Tiendas
+    paginate_by = 20
 
-class TiendasRegistrar(TemplateView):
+class TiendasRegistrar(CreateView):
     template_name = 'categorias/tiendas-registrar.html'
+    form_class = FormTiendas
+    success_url = '/categorias/tiendas/listado'
+
+class TiendasEditar(UpdateView):
+    model = Tiendas
+    template_name = 'categorias/tiendas-registrar.html'
+    form_class = FormTiendas
+    success_url = '/categorias/tiendas/listado'
+
+class TiendasEliminar(DeleteView):
+    model = Tiendas
+    template_name = 'eliminar.html'
+    success_url = '/categorias/tiendas/listado'
+
+    def get_context_data(self, **kwargs):
+        context = super(TiendasEliminar, self).get_context_data(**kwargs)
+        context['url_return'] = '/categorias/tiendas/listado'
 
 class TipoInvolucaradosListado(TemplateView):
     template_name = 'categorias/tipo_involucrados-listado.html'

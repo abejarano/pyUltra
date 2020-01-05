@@ -8,9 +8,14 @@
 
                     </div>
                     <div class="d-flex">
-                        <button class="btn btn-sm btn-outline-light btn-wth-icon icon-wthot-bg mr-15 mb-15"><span class="icon-label"><i class="fa fa-envelope-o"></i> </span><span class="btn-text">Enviar al correo </span></button>
-                        <button class="btn btn-sm btn-outline-light btn-wth-icon icon-wthot-bg mr-15 mb-15"><span class="icon-label"><i class="fa fa-print"></i> </span><span class="btn-text">Imprimir </span></button>
-                        <button class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15"><span class="icon-label"><i class="fa fa-download"></i> </span><span class="btn-text">Exportar </span></button>
+                        <a href="/categorias/tiendas/registrar" class="btn btn-sm  btn-primary btn-wth-icon icon-wthot-bg mr-15 mb-15">
+                            <span class="icon-label">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                            <span class="btn-text">
+                                Nuevo
+                            </span>
+                        </a>
                     </div>
                 </div>
                 <!-- /Title -->
@@ -18,30 +23,9 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <section class="hk-sec-wrapper">
-                          <h5 class="hk-sec-title">Tiendas</h5>
-                            <p class="mb-25"><strong>(*) Datos Obligatorio, Nota:</strong> Todos los valores se guardaran en mayusculas para mantener un solo formato uniforme.</p>
+                          <h5 class="hk-sec-title">Listado de Tiendas</h5>
+
                             <hr>
-                                <form class="form-inline">
-                                    <div class="col-auto">
-                                       <label for="clases">Tienda</label>
-                                    </div>
-                                    <div class="col-auto">
-                                        <label class="sr-only" for=tienda>Tiendas</label>
-                                        <input type="text" class="form-control mb-2" id="tienda" placeholder="Agregar tienda">
-                                    </div>
-                                    <div class="col-auto">
-                                       <label for="clases">Propietario</label>
-                                    </div>
-                                    <div class="col-auto">
-                                        <label class="sr-only" for="Propietario">Propietario</label>
-                                        <input type="text" class="form-control mb-2" id="Propietario" placeholder="Agregar Propietario">
-                                    </div>
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-danger mb-2">Guardar</button>
-                                    </div>
-                                    </form>
-                                    <hr>
-                            <h5 class="hk-sec-title">Lista de categorías tiendas</h5>
 
                             <div class="row">
                                 <div class="col-sm">
@@ -58,33 +42,26 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {% for object in object_list %}
                                                 <tr>
-
-                                                    <td>PVEA-CHINCHA</td>
-                                                    <td>SIN INFORMACIÓN</td>
-                                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
-                                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
+                                                    <td>{{object.nombre}}</td>
+                                                    <td>{{object.propietario}}</td>
+                                                    <td>
+                                                            <a href="/categorias/tiendas/{{object.id}}/editar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                                                <span class="btn-icon-wrap">
+                                                                    <i class="fa fa-search"></i>
+                                                                </span>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="/categorias/tiendas/{{object.id}}/eliminar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                                                <span class="btn-icon-wrap">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </span>
+                                                            </a>
+                                                        </td>
                                                 </tr>
-                                                <tr>
-
-                                                    <td>PVEA-IZAGUARR</td>
-                                                    <td>SIN INFORMACIÓN</td>
-                                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></i></i></span></button></td>
-                                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td>PVEA-ATE</td>
-                                                    <td>SIN INFORMACIÓN</td>
-                                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
-                                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
-                                                </tr>
-                                                 <tr>
-                                                    <td>PVEA-MIRAFLORES</td>
-                                                    <td>SIN INFORMACIÓN</td>
-                                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
-                                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
-                                                </tr>
+                                                {% endfor %}
                                             </tbody>
 
                                         </table>

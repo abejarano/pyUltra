@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="panel panel-primary" style="position: relative; top: 10px;">
+    <div class="panel-heading text-center">Confirmar Eliminación</div>
+		<form method="post" style="text-align: center;">
+			{% csrf_token %}
+			<div class="alert alert-warning" style="width: 50%;margin: auto;margin-top: 14px;">
+				<h4>¿Está seguro que desea eliminar el registro?</h4>
+				<button class="btn btn-primary" type="submit">Si</button>
+				<a class="btn btn-default" href="{{url_return}}">No</a>
+			</div>
+		</form>
+	</div>
+{% endblock %}
