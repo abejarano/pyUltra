@@ -21,7 +21,8 @@ def Index(request):
                 else:
                     return HttpResponseRedirect('/')
             else:
-                messages.add_message(request, messages.INFO, 'Hello world.')
+                messages.warning(request, 'Usuario no está regitrado en el sistema.')
+                return HttpResponseRedirect('/')
 
     return render(request, 'usuarios/login.html')
 

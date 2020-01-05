@@ -24,9 +24,11 @@
                         </div>
                     {% endif %}
                     {% if messages %}
-                        <div class="alert alert-primary" role="alert">
-                          {{ message }}
+                        {% for message in messages %}
+                        <div class="alert alert-warning text-center" role="alert">
+                            {{ message }}
                         </div>
+                        {% endfor %}
                     {% endif %}
                     <section class="hk-sec-wrapper">
                         <h5 class="hk-sec-title text-center">Bienvenido</h5>
