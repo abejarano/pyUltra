@@ -151,8 +151,30 @@ class TipoInvolucaradosListado(TemplateView):
 class TipoInvolucaradosRegistrar(TemplateView):
     template_name = 'categorias/tipo_involucrados-registrar.html'
 
-class TipoProcesosListado(TemplateView):
+class TipoProcesosListado(ListView):
     template_name = 'categorias/tipo_procesos-listado.html'
+    model = TipoProcesos
+    paginate_by = 20
 
-class TipoProcesosRegistrar(TemplateView):
+class TipoProcesosRegistrar(CreateView):
     template_name = 'categorias/tipo_procesos-registrar.html'
+    form_class = FormTipoProceso
+    model = TipoProcesos
+    success_url = '/categorias/tipo-procesos/listado'
+
+class TipoProcesosEditar(UpdateView):
+    template_name = 'categorias/tipo_procesos-registrar.html'
+    form_class = FormTipoProceso
+    model = TipoProcesos
+    success_url = '/categorias/tipo-procesos/listado'
+
+class TipoProcesosEliminar(DeleteView):
+    model = TipoProcesos
+    template_name = 'eliminar.html'
+    success_url = '/categorias/tipo-procesos/listado'
+
+    def get_context_data(self, **kwargs):
+        context = super(TipoProcesosEliminar, self).get_context_data(**kwargs)
+        context['url_return'] = '/categorias/tipo-procesos/listado'
+
+        return context
