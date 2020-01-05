@@ -50,10 +50,8 @@
                             <div class="col-4">
                                 <p class="text-center">Foto de Perfil</p>
                                 <div style="width: 180px; position: relative; margin: 0 auto">
-                                    <!--<img id="avatar" src="{% static 'img/avatar.svg' %}" width="180px">
-                                    {{form.foto}}-->
                                     <div class="cargar">{{form.foto}}</div>
-                                    <div class="clearfix" style="height: 6px;"></div>
+
                                     {% if form.foto.value %}
                                         <img name="preview_logo" id="avatar" width="180px" src = "/media/{{form.foto.value}}">
                                     {% else %}
@@ -96,6 +94,8 @@
 
                         <hr>
                         <button class="btn btn-danger" type="submit">Guardar información del tendero</button>
+                        <a href="/gestion/tenderos/registrar" class="btn-primary btn"> Nuevo</a>
+                        <a href="/gestion/tenderos/listado" class="btn-success btn"> Listado</a>
                     </form>
                 </div>
             </div>
