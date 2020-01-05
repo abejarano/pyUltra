@@ -62,11 +62,33 @@ class ModalidadEliminar(DeleteView):
 
         return context
 
-class NacionalidadesListado(TemplateView):
+class NacionalidadesListado(ListView):
     template_name = 'categorias/nacionalidades-listado.html'
+    model = Nacionalidades
+    paginate_by = 20
 
-class NacionalidadesRegistrar(TemplateView):
+class NacionalidadesEliminar(DeleteView):
+    model = Nacionalidades
+    template_name = 'eliminar.html'
+    success_url = '/categorias/nacionalidades/listado'
+
+    def get_context_data(self, **kwargs):
+        context = super(NacionalidadesEliminar, self).get_context_data(**kwargs)
+        context['url_return'] = '/categorias/nacionalidades/listado'
+
+        return context
+
+class NacionalidadesRegistrar(CreateView):
     template_name = 'categorias/nacionalidades-registrar.html'
+    model = Nacionalidades
+    form_class = FormNacionalidades
+    success_url = '/categorias/nacionalidades/listado'
+
+class NacionalidadesEditar(UpdateView):
+    template_name = 'categorias/nacionalidades-registrar.html'
+    model = Nacionalidades
+    form_class = FormNacionalidades
+    success_url = '/categorias/nacionalidades/listado'
 
 class SituacionesListado(ListView):
     template_name = 'categorias/situaciones-listado.html'

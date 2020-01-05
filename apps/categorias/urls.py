@@ -25,6 +25,8 @@ urlpatterns = [
 
     path('nacionalidades/listado', login_required(NacionalidadesListado.as_view())),
     path('nacionalidades/registrar', login_required(NacionalidadesRegistrar.as_view())),
+    path('nacionalidades/<pk>/eliminar', login_required(NacionalidadesEliminar.as_view())),
+    path('nacionalidades/<pk>/editar', login_required(NacionalidadesEditar.as_view())),
 
     path('tipo-involucrados/listado', login_required(TipoInvolucaradosListado.as_view())),
     path('tipo-involucrados/registrar', login_required(TipoInvolucaradosRegistrar.as_view())),

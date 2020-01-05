@@ -46,3 +46,14 @@ class FormSituaciones(forms.ModelForm):
     class Meta:
         model = Situaciones
         fields = '__all__'
+
+class FormNacionalidades(forms.ModelForm):
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for campo in self.fields:
+            self.fields[campo].widget.attrs.update({'required': 'required'})
+            self.fields[campo].widget.attrs.update({'class': 'form-control'})
+
+    class Meta:
+        model = Nacionalidades
+        fields = '__all__'
