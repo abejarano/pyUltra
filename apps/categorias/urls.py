@@ -30,6 +30,8 @@ urlpatterns = [
 
     path('tipo-involucrados/listado', login_required(TipoInvolucaradosListado.as_view())),
     path('tipo-involucrados/registrar', login_required(TipoInvolucaradosRegistrar.as_view())),
+    path('tipo-involucrados/<pk>/eliminar', login_required(TipoInvolucaradosEliminar.as_view())),
+    path('tipo-involucrados/<pk>/editar', login_required(TipoInvolucaradosEditar.as_view())),
 
     path('tipo-procesos/listado', login_required(TipoProcesosListado.as_view())),
     path('tipo-procesos/registrar', login_required(TipoProcesosRegistrar.as_view())),

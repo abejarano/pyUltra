@@ -145,11 +145,33 @@ class TiendasEliminar(DeleteView):
 
         return context
 
-class TipoInvolucaradosListado(TemplateView):
+class TipoInvolucaradosListado(ListView):
+    model = TipoInvolucrados
+    paginate_by = 20
     template_name = 'categorias/tipo_involucrados-listado.html'
 
-class TipoInvolucaradosRegistrar(TemplateView):
+class TipoInvolucaradosRegistrar(CreateView):
+    model = TipoInvolucrados
+    form_class = FormTipoInvolucrados
+    success_url = '/categorias/tipo-involucrados/listado'
     template_name = 'categorias/tipo_involucrados-registrar.html'
+
+class TipoInvolucaradosEditar(UpdateView):
+    model = TipoInvolucrados
+    form_class = FormTipoInvolucrados
+    success_url = '/categorias/tipo-involucrados/listado'
+    template_name = 'categorias/tipo_involucrados-registrar.html'
+
+class TipoInvolucaradosEliminar(DeleteView):
+    model = TipoInvolucrados
+    template_name = 'eliminar.html'
+    success_url = '/categorias/tipo-involucrados/listado'
+
+    def get_context_data(self, **kwargs):
+        context = super(TipoInvolucaradosEliminar, self).get_context_data(**kwargs)
+        context['url_return'] = '/categorias/tipo-involucrados/listado'
+
+        return context
 
 class TipoProcesosListado(ListView):
     template_name = 'categorias/tipo_procesos-listado.html'

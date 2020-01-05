@@ -68,3 +68,14 @@ class FormTipoProceso(forms.ModelForm):
     class Meta:
         model = TipoProcesos
         fields = '__all__'
+
+class FormTipoInvolucrados(forms.ModelForm):
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for campo in self.fields:
+            self.fields[campo].widget.attrs.update({'required': 'required'})
+            self.fields[campo].widget.attrs.update({'class': 'form-control'})
+
+    class Meta:
+        model = TipoInvolucrados
+        fields = '__all__'
