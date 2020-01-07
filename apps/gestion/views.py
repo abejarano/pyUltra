@@ -75,8 +75,11 @@ class ProductosListado(ListView):
 
         return queryset
 
-class DenunciasRegistrar(TemplateView):
+class DenunciasRegistrar(CreateView):
+    model = Denuncias
+    form_class = FormDenuncias
     template_name = 'gestion/denuncias-registrar.html'
+    success_url = '/gestion/denuncias/listado'
 
 class DenunciasListado(TemplateView):
     template_name = 'gestion/denuncias-listado.html'

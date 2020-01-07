@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import FileInput
+from django.forms import FileInput, Select
 
 from .models import Tenderos, Productos, Denuncias
 
@@ -37,9 +37,14 @@ class FormDenuncias(forms.ModelForm):
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
         for campo in self.fields:
-            self.fields[campo].widget.attrs.update({'required': 'required'})
-            self.fields[campo].widget.attrs.update({'class': 'form-control'})
+            if campo != 'tendero':
+                self.fields[campo].widget.attrs.update({'required': 'required'})
+                self.fields[campo].widget.attrs.update({'class': 'form-control'})
 
     class Meta:
         model = Denuncias
         fields = '__all__'
+        widgets = {
+            'tendero':
+                Select(attrs={'class': 'selectpicker'})
+        }
