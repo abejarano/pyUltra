@@ -10,15 +10,31 @@
                     <div class="row mb-30">
                         <div class="col-sm">
                             <h5 class="hk-sec-title">Buscar Productos</h5>
-
-                                <form>
-                                    <div class="input-group d-inline-flex">
-                                        <input class="form-control" type="search" placeholder="Ingrese el ID del usuario, E-mail a buscar" aria-label="Search">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-purple" type="submit">Buscar</button>
+                            <form method="get">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <div class="input-group d-inline-flex">
+                                            <input class="form-control" type="search" name="buscar" placeholder="Ingrese el Código del producto o el Nombre a buscar" aria-label="Search">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-purple" type="submit">Buscar</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </form>
+                                    <div class="col-2">
+
+                                        <a href="/gestion/productos/registrar" class="btn  btn-primary btn-wth-icon icon-wthot-bg mr-15 mb-15 float-right">
+                                            <span class="icon-label">
+                                                <i class="fa fa-plus-circle"></i>
+                                            </span>
+                                            <span class="btn-text">
+                                                Nuevo
+                                            </span>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </form>
 
                         </div>
                     </div>
@@ -39,45 +55,74 @@
                                     <th>Producto</th>
                                     <th>Monto</th>
                                     <th>Ver</th>
-                                    <th>Editar</th>
                                     <th>Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            {% for object in object_list %}
                                 <tr>
-                                    <td>02132</td>
-                                    <td>Producto</td>
-                                    <td>20,00</td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-search"></i></span></button></td>
-                                   
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
+                                    <td>
+                                        {{object.codigo}}
+                                    </td>
+                                    <td>
+                                        {{object.nombre}}
+                                    </td>
+                                    <td>
+                                        {{object.monto}}
+                                    </td>
+                                    <td>
+                                        <a href="/gestion/productos/{{object.id}}/editar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                            <span class="btn-icon-wrap">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/gestion/productos/{{object.id}}/eliminar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                            <span class="btn-icon-wrap">
+                                                <i class="fa fa-trash"></i>
+                                            </span>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>02143</td>
-                                    <td>Producto</td>
-                                    <td>245,00</td>
-                  
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-search"></i></i></span></button></td>
-                                    
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></i></i></span></button></td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
-                                </tr>
-                                <tr>
-                                    <td>02132</td>
-                                    <td>Producto</td>
-                                    <td>5,00</td>
-                   
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-search"></i></span></button></td>
-                                   
-                                    <td><button class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3"><span class="btn-icon-wrap"><i class="fa fa-pencil"></i></span></button></td>
-                                    <td><button class="btn btn-icon btn-icon-circle btn-info btn-icon-style-3"><span class="btn-icon-wrap"><i class="icon-trash"></i></span></button></td>
-                                </tr>
-                                
-                               
+                            {% endfor %}
                             </tbody>
                             
                         </table>
+                         {% if is_paginated %}
+                            <br>
+                            <div class="row justify-content-center">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination">
+                                        {% if page_obj.has_previous %}
+                                          <li class="page-item">
+                                              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                                  &laquo; Anterior
+                                              </a>
+                                          </li>
+                                        {% else %}
+                                          <li class="disabled"><span class="page-link">&laquo; Anterior</span></li>
+                                        {% endif %}
+                                        {% for i in page_obj.paginator.page_range %}
+                                          {% if page_obj.number == i %}
+                                            <li class="page-item active">
+                                                <span class="page-link">{{ i }}
+                                                    <span class="sr-only">(current)</span>
+                                                </span>
+                                            </li>
+                                          {% else %}
+                                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                          {% endif %}
+                                        {% endfor %}
+                                        {% if page_obj.has_next %}
+                                          <li><a class="page-link" href="?page={{ page_obj.next_page_number }}"> Siguiente &raquo;</a></li>
+                                        {% else %}
+                                          <li class="page-item disabled"><span class="page-link">Siguiente&raquo;</span></li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
