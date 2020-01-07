@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import FileInput
 
-from .models import Tenderos, Productos
+from .models import Tenderos, Productos, Denuncias
 
 class FormTenderos(forms.ModelForm):
     def __init__(self,*args, **kwargs):
@@ -31,4 +31,15 @@ class FormProductos(forms.ModelForm):
 
     class Meta:
         model = Productos
+        fields = '__all__'
+
+class FormDenuncias(forms.ModelForm):
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for campo in self.fields:
+            self.fields[campo].widget.attrs.update({'required': 'required'})
+            self.fields[campo].widget.attrs.update({'class': 'form-control'})
+
+    class Meta:
+        model = Denuncias
         fields = '__all__'

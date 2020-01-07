@@ -1,5 +1,6 @@
 from django.db import models
-from apps.categorias.models import Tiendas, Nacionalidades
+from apps.categorias.models import Tiendas, Nacionalidades, Clases
+from django.utils import timezone
 # Create your odels here.
 
 class Productos(models.Model):
@@ -8,7 +9,6 @@ class Productos(models.Model):
     monto = models.DecimalField(max_digits=19, decimal_places=3, null=False, blank=False)
     area = models.CharField(max_length=100,)
     descripcion = models.CharField(max_length=300)
-    tienda = models.ForeignKey(Tiendas, on_delete=models.PROTECT)
 
 class Tenderos(models.Model):
     SEXO = (
@@ -33,6 +33,22 @@ class Tenderos(models.Model):
 
     def __str__(self):
         return self.nombre + ' ' + self.apellido
+
+    class Meta:
+        ordering = ['-id']
+
+
+class Denuncias(models.Model):
+    hechos = models.TextField(null=False, blank=False, verbose_name=('Narra los hechos'))
+    fecha_denuncia = models.DateTimeField(default=timezone.now,)
+    tendero = models.ForeignKey(Tenderos, related_name='fk_denuncia_tendero', on_delete=models.PROTECT)
+    tienda = models.ForeignKey(Tiendas, related_name='fk_denuncia_tienda', on_delete=models.PROTECT)
+    producto = models.ForeignKey(Productos, related_name='fk_denuncia_producto', on_delete=models.PROTECT)
+    modalidad = models.ForeignKey(Productos, related_name='fk_denuncia_modalidad', on_delete=models.PROTECT)
+    clase = models.ForeignKey(Clases, related_name='fk_denuncia_clase', on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.id
 
     class Meta:
         ordering = ['-id']
