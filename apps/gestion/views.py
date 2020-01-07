@@ -40,11 +40,40 @@ class TenderosEliminar(DeleteView):
         return context
 
 
-class ProductosRegistrar(TemplateView):
+class ProductosRegistrar(CreateView):
     template_name = 'gestion/productos-registrar.html'
+    model = Productos
+    form_class = FormProductos
+    success_url = '/gestion/productos/listado'
 
-class ProductosListado(TemplateView):
+class ProductosEditar(UpdateView):
+    template_name = 'gestion/productos-registrar.html'
+    model = Productos
+    form_class = FormProductos
+    success_url = '/gestion/productos/listado'
+
+class ProductosEliminar(DeleteView):
+    model = Productos
+    template_name = 'eliminar.html'
+    success_url = '/gestion/productos/listado'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductosEliminar, self).get_context_data(**kwargs)
+        context['url_return'] = '/gestion/productos/listado'
+
+        return context
+
+class ProductosListado(ListView):
+    model = Productos
+    paginate_by = 20
     template_name = 'gestion/productos-listado.html'
+
+    def get_queryset(self, **kwargs):
+        queryset = self.model.objects.all()
+        if 'buscar' in self.request.GET:
+            queryset = queryset.filter(codigo__icontains=self.request.GET['buscar']) | queryset.filter(nombre__icontains=self.request.GET['buscar'])
+
+        return queryset
 
 class DenunciasRegistrar(TemplateView):
     template_name = 'gestion/denuncias-registrar.html'

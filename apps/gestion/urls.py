@@ -10,6 +10,8 @@ urlpatterns = [
 
     path('productos/registrar', login_required(ProductosRegistrar.as_view())),
     path('productos/listado', login_required(ProductosListado.as_view())),
+    path('productos/<pk>/editar', login_required(ProductosEditar.as_view())),
+    path('productos/<pk>/eliminar', login_required(ProductosEliminar.as_view())),
 
     path('denuncias/registrar', login_required(DenunciasRegistrar.as_view())),
     path('denuncias/listado', login_required(DenunciasListado.as_view())),
