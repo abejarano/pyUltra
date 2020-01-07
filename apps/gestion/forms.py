@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import FileInput, Select
+from django.forms import FileInput, Select, SelectMultiple
 
 from .models import Tenderos, Productos, Denuncias
 
@@ -37,7 +37,7 @@ class FormDenuncias(forms.ModelForm):
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
         for campo in self.fields:
-            if campo != 'tendero':
+            if campo != 'tendero' and campo != 'producto' and campo != 'tienda' and campo != 'modalidad' and campo != 'clase':
                 self.fields[campo].widget.attrs.update({'required': 'required'})
                 self.fields[campo].widget.attrs.update({'class': 'form-control'})
 
@@ -46,5 +46,28 @@ class FormDenuncias(forms.ModelForm):
         fields = '__all__'
         widgets = {
             'tendero':
-                Select(attrs={'class': 'selectpicker'})
+                SelectMultiple(attrs={'class': 'form-control selectpicker',
+                                      'data-live-search': 'true'
+                                    }
+                                ),
+            'producto':
+                SelectMultiple(attrs={'class': 'form-control selectpicker',
+                                      'data-live-search': 'true'
+                                    }
+                                ),
+            'tienda':
+                Select(attrs={'class': 'form-control selectpicker',
+                              'data-live-search': 'true'
+                              }
+                       ),
+            'modalidad':
+                Select(attrs={'class': 'form-control selectpicker',
+                              'data-live-search': 'true'
+                              }
+                       ),
+            'clase':
+                Select(attrs={'class': 'form-control selectpicker',
+                              'data-live-search': 'true'
+                              }
+                       ),
         }
