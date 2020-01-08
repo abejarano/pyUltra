@@ -32,29 +32,29 @@
                 <hr>
                 <h6 class="form-group">Datos de la tienda, productos(s) y otros</h6>
                 <div class="row">
-                    <div class="col-md-12 form-group">
+                    <div class="col-lg-6 col-sm-6 form-group">
                         <label for="pregunta">Seleccionar el/ los producto(s)</label>
                         {{form.producto}}
                     </div>
+                    <div class="col-lg-6 col-sm-6 form-group">
+                        <label for="tienda">Seleccionar la tienda</label>
+                        {{form.tienda}}
+                    </div>
+                    <div class="col-lg-6 col-sm-6 form-group">
+                        <label for="modalidad">Modalidad</label>
+                        {{form.modalidad}}
+                    </div>
+                    <div class="col-lg-6 col-sm-6 form-group">
+                        <label for="clase">Clase</label>
+                        {{form.clase}}
+                    </div>
                 </div>
-
-                <div class="col-md-12 form-group">
-
-                 <div class="col-md-12 form-group">
-                    <label for="tienda">Seleccionar la tienda</label>
-                     {{form.tienda}}
-                 </div>
-                <div class="col-md-12 form-group">
-                    <label for="modalidad">Modalidad</label>
-                    {{form.modalidad}}
-                </div>
-               <div class="col-md-12 form-group">
-                    <label for="clase">Clase</label>
-                    {{form.clase}}
-               </div></div>
-
+                <hr>
+                <button class="btn btn-danger" type="submit">Guardar información de la denuncia</button>
+                <a href="/gestion/denuncias/registrar" class="btn-primary btn"> Nuevo</a>
+                <a href="/gestion/denuncias/listado" class="btn-success btn"> Listado</a>
             </form>
-        </div>
+        </section>
     </div>
 </section>
 {% endblock %}

@@ -81,5 +81,25 @@ class DenunciasRegistrar(CreateView):
     template_name = 'gestion/denuncias-registrar.html'
     success_url = '/gestion/denuncias/listado'
 
-class DenunciasListado(TemplateView):
+class DenunciasEditar(UpdateView):
+    model = Denuncias
+    form_class = FormDenuncias
+    template_name = 'gestion/denuncias-registrar.html'
+    success_url = '/gestion/denuncias/listado'
+
+
+class DenunciasListado(ListView):
+    model = Denuncias
+    paginate_by = 20
     template_name = 'gestion/denuncias-listado.html'
+
+class DenunciasEliminar(DeleteView):
+    model = Denuncias
+    template_name = 'eliminar.html'
+    success_url = '/gestion/denuncias/listado'
+
+    def get_context_data(self, **kwargs):
+        context = super(DenunciasEliminar, self).get_context_data(**kwargs)
+        context['url_return'] = '/gestion/denuncias/listado'
+
+        return context

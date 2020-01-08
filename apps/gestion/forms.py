@@ -43,7 +43,8 @@ class FormDenuncias(forms.ModelForm):
 
     class Meta:
         model = Denuncias
-        fields = '__all__'
+        # fields = '__all__'
+        exclude = ['fecha_denuncia']
         widgets = {
             'tendero':
                 SelectMultiple(attrs={'class': 'form-control selectpicker',

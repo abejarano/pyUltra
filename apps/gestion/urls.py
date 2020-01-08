@@ -15,4 +15,6 @@ urlpatterns = [
 
     path('denuncias/registrar', login_required(DenunciasRegistrar.as_view())),
     path('denuncias/listado', login_required(DenunciasListado.as_view())),
+    path('denuncias/<pk>/editar', login_required(DenunciasEditar.as_view())),
+    path('denuncias/<pk>/eliminar', login_required(DenunciasEliminar.as_view())),
 ]
