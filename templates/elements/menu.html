@@ -45,7 +45,6 @@
                         <a href="#" class="dropdown-toggle dropdown-item">Denuncias</a>
                         <div class="dropdown-menu open-right-side">
                             <a class="dropdown-item" href="/gestion/denuncias/registrar">Registrar</a>
-                            <a class="dropdown-item" href="/gestion/denuncias/listado">Buscar</a>
 
                         </div>
                     </div>
@@ -68,16 +67,17 @@
             </li>
              <li class="nav-item dropdown show-on-hover active">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Seguimiento legal </a>
+                    Seguimiento legal
+                </a>
 
                 <div class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                    <a class="dropdown-item" href="seguimiento-legal-denuncias.php">Denuncias</a>
-                    <a class="dropdown-item" href="Seguimiento-legal-intervenciones.php">Intervenciones</a>
+                    <a class="dropdown-item" href="/gestion/denuncias/listado">Denuncias - Intervenciones</a>
                 </div>
             </li>
             <li class="nav-item dropdown show-on-hover active">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Reportes </a>
+                    Reportes
+                </a>
 
                 <div class="dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                     <a class="dropdown-item" href="reporte-usuario.php">Usuarios</a>
@@ -115,7 +115,7 @@
                         <span class="badge badge-success badge-indicator"></span>
                     </div>
                     <div class="media-body">
-                        <span>Aash Bill<i class="zmdi zmdi-chevron-down"></i></span>
+                        <span>{{ user.get_username }}<i class="zmdi zmdi-chevron-down"></i></span>
                     </div>
                 </div>
             </a>
