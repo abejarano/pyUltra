@@ -143,9 +143,9 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'db_ultra',
-            'USER': 'usr_kapture',
-            'PASSWORD': '1qaz2wsx!P@ssw0rd2020:2019',
-            'HOST': '159.69.123.95',
+            'USER': 'postgres',
+            'PASSWORD': '1qaz2wsx2019',
+            'HOST': '127.0.0.1',
             'PORT': 5432,
         }
     }
