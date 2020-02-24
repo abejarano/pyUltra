@@ -40,6 +40,7 @@ class Tenderos(models.Model):
 class Denuncias(models.Model):
     hechos = models.TextField(null=False, blank=False, verbose_name=('Narra los hechos'))
     fecha_denuncia = models.DateTimeField(default=timezone.now,)
+    estado = models.CharField(max_length=80, null=True, blank=True)
     tendero = models.ManyToManyField(Tenderos)
     tienda = models.ForeignKey(Tiendas, related_name='fk_denuncia_tienda', on_delete=models.PROTECT)
     producto = models.ManyToManyField(Productos)

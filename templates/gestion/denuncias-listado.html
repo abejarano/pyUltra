@@ -18,7 +18,39 @@
                                     Nuevo
                                 </span>
                             </a>
-
+                            <form method="post" id="form-importar" enctype="multipart/form-data" action="/gestion/import/denuncias/">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-3">
+                                        <input type="file" style="display: none" id="input-upload" name="file">
+                                        <button type="button" class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15" onclick="seleccionarArchivo()">
+                                            <span class="icon-label"><i class="fa fa-download"></i></span>
+                                            <span class="btn-text">Importar </span>
+                                        </button>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15">
+                                            <span class="icon-label"><i class="fa fa-upload"></i></span>
+                                            <span class="btn-text">Exportar </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="mb-10">
+                                    <strong>IMPORTAR DENUNCIAS:</strong> Se realiza mediante un archivo .csv. y debe contener los en siguientes campos en
+                                    el orden respectivo:
+                                </p><STRONG>NOMBRE DEL TENDEDOR,</STRONG>
+                                    <STRONG>APELLIDO DEL TENDEDOR,</STRONG>
+                                    <STRONG>HECHOS,</STRONG>
+                                    <STRONG>PRODUCTO,</STRONG>
+                                    <STRONG>NOMBRE DE LA TIENDA,</STRONG>
+                                    <STRONG>MODALIDAD,</STRONG>
+                                    <STRONG>ESTADO DE LA INTERVENCIÓN,</STRONG>
+                                    <STRONG>FECHA Y HORA (MISMO CAMPO).</STRONG>
+                                <p class="mt-10">
+                                    <strong>NOTA:</strong> Si en el archivo de denuncias existen tenderos que no estan registrados en el sistema. Se recomienda realizar el proceso de
+                                    importar tenderos primeramente.
+                                </p>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -120,3 +152,14 @@
 
     </div>
 {% endblock %}
+
+{% block js %}
+<script>
+    $('#input-upload').change(function() {
+        $('#form-importar').submit();
+    });
+    function seleccionarArchivo() {
+        $('#input-upload').trigger('click');
+    }
+</script>
+{% endblock js %}
