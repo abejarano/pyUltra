@@ -25,6 +25,9 @@ class Tiendas(models.Model):
 class Situaciones(models.Model):
     nombre = models.CharField(max_length=60, null=False, blank=False)
 
+    def __str__(self):
+        return self.nombre
+
     class Meta:
         ordering = ['-id']
 
@@ -48,6 +51,9 @@ class Nacionalidades(models.Model):
 
 class TipoProcesos(models.Model):
     nombre = models.CharField(max_length=60, null=False, blank=False)
+
+    def __str__(self):
+        return self.nombre
 
     class Meta:
         ordering = ['-id']
