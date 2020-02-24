@@ -38,7 +38,6 @@ class FormDenuncias(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for campo in self.fields:
             if campo != 'tendero' and campo != 'producto' and campo != 'tienda' and campo != 'modalidad' and campo != 'clase':
-                self.fields[campo].widget.attrs.update({'required': 'required'})
                 self.fields[campo].widget.attrs.update({'class': 'form-control'})
 
     class Meta:
