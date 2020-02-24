@@ -3,6 +3,7 @@
 * Python 3.6
 * Django 3
 * mysqlclient 1.4.6
+* WeasyPrint
 
 # ¿Cómo crear el ambiente de desarrollo?
 
