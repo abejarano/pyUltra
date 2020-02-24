@@ -3,7 +3,11 @@
 <div class="row">
     <div class="col-xl-12">
         <section class="hk-sec-wrapper">
-
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
             <div class="row">
                 <div class="col-sm">
                     <div class="row mb-30">
@@ -45,6 +49,7 @@
                                     <STRONG>NOMBRE DE LA TIENDA,</STRONG>
                                     <STRONG>MODALIDAD,</STRONG>
                                     <STRONG>ESTADO DE LA INTERVENCIÓN,</STRONG>
+                                    <STRONG>CLASE,</STRONG>
                                     <STRONG>FECHA Y HORA (MISMO CAMPO).</STRONG>
                                 <p class="mt-10">
                                     <strong>NOTA:</strong> Si en el archivo de denuncias existen tenderos que no estan registrados en el sistema. Se recomienda realizar el proceso de

@@ -6,7 +6,7 @@ from django.utils import timezone
 class Productos(models.Model):
     codigo = models.CharField(max_length=8, db_index=True,)
     nombre = models.CharField(max_length=100, null=False, blank=False)
-    monto = models.DecimalField(max_digits=19, decimal_places=3, null=False, blank=False)
+    monto = models.DecimalField(max_digits=19, decimal_places=3, default=0, null=False, blank=False)
     area = models.CharField(max_length=100,)
     descripcion = models.CharField(max_length=300)
 
