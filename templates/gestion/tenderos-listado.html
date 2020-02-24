@@ -161,7 +161,7 @@
 
     </div>
 {% endblock %}
-    {% block js %}
+{% block js %}
     <script>
         $('#input-upload').change(function() {
             $('#form-importar').submit();
@@ -170,4 +170,4 @@
             $('#input-upload').trigger('click');
         }
     </script>
-    {% endblock js %}
+{% endblock js %}

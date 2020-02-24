@@ -2,74 +2,107 @@
 
 {% block content %}
 <!-- Title -->
-                <div class="hk-pg-header align-items-top">
-                    <div>
-                        <h2 class="hk-pg-title font-weight-600 mb-10">Categorías</h2>
+<div class="hk-pg-header align-items-top">
+    <div>
+        <h2 class="hk-pg-title font-weight-600 mb-10">Categorías</h2>
 
-                    </div>
-                    <div class="d-flex">
-                        <a href="/categorias/tiendas/registrar" class="btn btn-sm  btn-primary btn-wth-icon icon-wthot-bg mr-15 mb-15">
+    </div>
+    <div class="d-flex">
+        <a href="/categorias/tiendas/registrar" class="btn btn-sm  btn-primary btn-wth-icon icon-wthot-bg mr-15 mb-15">
                             <span class="icon-label">
                                 <i class="fa fa-plus-circle"></i>
                             </span>
-                            <span class="btn-text">
+            <span class="btn-text">
                                 Nuevo
                             </span>
-                        </a>
+        </a>
+    </div>
+</div>
+<!-- /Title -->
+<!-- Row -->
+<div class="row">
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+            <h5 class="hk-sec-title">Listado de Tiendas</h5>
+
+            <hr>
+            <form method="post" id="form-importar" enctype="multipart/form-data" action="/gestion/import/tiendas/">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-3">
+                        <input type="file" style="display: none" id="input-upload" name="file">
+                        <button type="button" class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15" onclick="seleccionarArchivo()">
+                            <span class="icon-label"><i class="fa fa-download"></i></span>
+                            <span class="btn-text">Importar </span>
+                        </button>
                     </div>
                 </div>
-                <!-- /Title -->
-                <!-- Row -->
-                <div class="row">
-                    <div class="col-xl-12">
-                        <section class="hk-sec-wrapper">
-                          <h5 class="hk-sec-title">Listado de Tiendas</h5>
+                <p class="mb-25">
+                    <strong>IMPORTAR TIENDAS:</strong> Se realiza mediante un archivo .csv. y debe contener los en siguientes campos en
+                    el orden respectivo:
+                </p>
+                <p class="mb-25">
+                    <STRONG>NOMBBRE DE LA TIENDA</STRONG>
+                    <STRONG>NOMBRE DEL PROPIETARIO</STRONG>
+                </p>
+            </form>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap mb-5">
+                        <div class="table-responsive">
+                            <table id="datable_1" class="table mb-0">
+                                <thead class="thead-dark">
+                                <tr>
 
-                            <hr>
-
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="table-wrap mb-5">
-                                     <div class="table-responsive">
-                                        <table id="datable_1" class="table mb-0">
-                                            <thead class="thead-dark">
-                                                <tr>
-
-                                                    <th>Tiendas</th>
-                                                    <th>Propietarios</th>
-                                                    <th>Editar</th>
-                                                    <th>Eliminar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for object in object_list %}
-                                                <tr>
-                                                    <td>{{object.nombre}}</td>
-                                                    <td>{{object.propietario}}</td>
-                                                    <td>
-                                                            <a href="/categorias/tiendas/{{object.id}}/editar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                    <th>Tiendas</th>
+                                    <th>Propietarios</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for object in object_list %}
+                                <tr>
+                                    <td>{{object.nombre}}</td>
+                                    <td>{{object.propietario}}</td>
+                                    <td>
+                                        <a href="/categorias/tiendas/{{object.id}}/editar"
+                                           class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
                                                                 <span class="btn-icon-wrap">
                                                                     <i class="fa fa-search"></i>
                                                                 </span>
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <a href="/categorias/tiendas/{{object.id}}/eliminar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/categorias/tiendas/{{object.id}}/eliminar"
+                                           class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
                                                                 <span class="btn-icon-wrap">
                                                                     <i class="fa fa-trash"></i>
                                                                 </span>
-                                                            </a>
-                                                        </td>
-                                                </tr>
-                                                {% endfor %}
-                                            </tbody>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
 
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </section>
-
+                            </table>
+                        </div>
                     </div>
-{% endblock %}
+                </div>
+            </div>
+        </section>
+
+    </div>
+    {% endblock %}
+
+    {% block js %}
+    <script>
+        $('#input-upload').change(function () {
+            $('#form-importar').submit();
+        });
+
+        function seleccionarArchivo() {
+            $('#input-upload').trigger('click');
+        }
+    </script>
+    {% endblock js %}
