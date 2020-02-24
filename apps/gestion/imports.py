@@ -117,3 +117,21 @@ def uploadTiendas(request):
         )
 
     return redirect('/gestion/tenderos/listado')
+
+def uploadProductos(request):
+    csv_file = request.FILES['file']
+    if not csv_file.name.endswith('.csv'):
+        messages.error(request, 'THIS IS NOT A CSV FILE')
+    data_set = csv_file.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+        _, created = Productos.objects.update_or_create(
+            codigo=column[0],
+            nombre=column[1],
+            monto=column[2],
+            area=column[3],
+            descripcion=column[4]
+        )
+
+    return redirect('/gestion/tenderos/listado')

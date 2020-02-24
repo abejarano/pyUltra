@@ -38,7 +38,31 @@
 
                         </div>
                     </div>
-
+                    <div>
+                        <form method="post" id="form-importar" enctype="multipart/form-data" action="/gestion/import/productos/">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="file" style="display: none" id="input-upload" name="file">
+                                    <button type="button" class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15" onclick="seleccionarArchivo()">
+                                        <span class="icon-label"><i class="fa fa-download"></i></span>
+                                        <span class="btn-text">Importar </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="mb-25">
+                                <strong>IMPORTAR PRODUCTOS:</strong> Se realiza mediante un archivo .csv. y debe contener los en siguientes campos en
+                                el orden respectivo:
+                            </p>
+                            <p class="mb-25">
+                                <STRONG>CÓDIGO,</STRONG>
+                                <STRONG>NOMBRE,</STRONG>
+                                <STRONG>MONTO,</STRONG>
+                                <STRONG>ÁREA,</STRONG>
+                                <STRONG>DESCRIPCIÓN</STRONG>
+                            </p>
+                        </form>
+                    </div>
 
                 </div>
             </div>

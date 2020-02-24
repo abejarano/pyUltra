@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.urls import path
 from .views import *
-from .imports import uploadTenderos, uploadDenuncias, uploadTiendas
+from .imports import uploadTenderos, uploadDenuncias, uploadTiendas, uploadProductos
 
 urlpatterns = [
     path('tenderos/registrar', login_required(TenderosRegistrar.as_view())),
@@ -22,4 +22,5 @@ urlpatterns = [
     path('import/tenderos/', login_required(uploadTenderos)),
     path('import/denuncias/', login_required(uploadDenuncias)),
     path('import/tiendas/', login_required(uploadTiendas)),
+    path('import/productos/', login_required(uploadProductos)),
 ]
