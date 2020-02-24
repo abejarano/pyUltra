@@ -99,3 +99,21 @@ def uploadTenderos(request):
         )
     
     return redirect('/gestion/tenderos/listado')
+
+
+def uploadTiendas(request):
+    csv_file = request.FILES['file']
+    if not csv_file.name.endswith('.csv'):
+        messages.error(request, 'THIS IS NOT A CSV FILE')
+    data_set = csv_file.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+
+        _, created = Tiendas.objects.update_or_create(
+            nombre=column[0],
+            propietario=column[1],
+
+        )
+
+    return redirect('/gestion/tenderos/listado')
