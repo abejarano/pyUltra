@@ -20,7 +20,6 @@
                                         </div>
                                     </div>
                                     <div class="col-2">
-
                                         <a href="/gestion/tenderos/registrar" class="btn  btn-primary btn-wth-icon icon-wthot-bg mr-15 mb-15 float-right">
                                             <span class="icon-label">
                                                 <i class="fa fa-plus-circle"></i>
@@ -29,18 +28,37 @@
                                                 Nuevo
                                             </span>
                                         </a>
-
                                     </div>
                                 </div>
-
                             </form>
-                            <form method="post" enctype="multipart/form-data" action="/gestion/import/tenderos/">
+                            <form method="post" id="form-importar" enctype="multipart/form-data" action="/gestion/import/tenderos/">
                                 {% csrf_token %}
-                                <input type="file" name="file">
-                                <button class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15">
-                                    <span class="icon-label"><i class="fa fa-download"></i></span>
-                                    <span class="btn-text">Exportar </span>
-                                </button>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <input type="file" style="display: none" id="input-upload" name="file">
+                                        <button type="button" class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15" onclick="seleccionarArchivo()">
+                                            <span class="icon-label"><i class="fa fa-download"></i></span>
+                                            <span class="btn-text">Importar </span>
+                                        </button>
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15">
+                                            <span class="icon-label"><i class="fa fa-upload"></i></span>
+                                            <span class="btn-text">Exportar </span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="mb-25">
+                                    <strong>IMPORTAR TENDEROS:</strong> Se realiza mediante un archivo .csv. y debe contener los en siguientes campos en
+                                    el orden respectivo:
+                                </p><STRONG>NOMBBRE</STRONG>
+                                    <STRONG>APELLIDO</STRONG>
+                                    <STRONG>NACIONALIDAD</STRONG>
+                                    <STRONG>DNI</STRONG>
+                                    <STRONG>DIRECCIÓN</STRONG>
+                                    <STRONG>TELÉFONO</STRONG>
+                                    <STRONG>SEXO (M,F)</STRONG>
+                                    <STRONG>TIPO</STRONG>
                             </form>
                         </div>
                     </div>
@@ -143,3 +161,13 @@
 
     </div>
 {% endblock %}
+    {% block js %}
+    <script>
+        $('#input-upload').change(function() {
+            $('#form-importar').submit();
+        });
+        function seleccionarArchivo() {
+            $('#input-upload').trigger('click');
+        }
+    </script>
+    {% endblock js %}

@@ -31,7 +31,7 @@ class TenderosEditar(UpdateView):
 class TenderosEliminar(DeleteView):
     model = Tenderos
     template_name = 'eliminar.html'
-    success_url = '/categorias/tipo-involucrados/listado'
+    success_url = '/gestion/tenderos/listado'
 
     def get_context_data(self, **kwargs):
         context = super(TenderosEliminar, self).get_context_data(**kwargs)
