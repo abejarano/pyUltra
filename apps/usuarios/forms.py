@@ -32,7 +32,7 @@ class UserCreateForm(forms.ModelForm):
             'first_name':
             TextInput(attrs={
                 'class': 'form-control',
-                'required': 'required',
+                ,
                 'nombre_etiqueta': _('Full name '),
                 'autofocus' : 'on',
                 'message' : _('The field name is required')
@@ -40,14 +40,14 @@ class UserCreateForm(forms.ModelForm):
             'last_name':
             TextInput(attrs={
                 'class': 'form-control',
-                'required': 'required',
+                ,
                 'nombre_etiqueta': _('Last name'),
                 'message' : _('The field last name is required')
             }),
             'email':
             EmailInput(attrs={
                 'class': 'form-control',
-                'required': 'required',
+                ,
                 'nombre_etiqueta': _('Email'),
                 'message' : _('The field email is required')
             }),
@@ -109,13 +109,13 @@ class UserUpdateForm(forms.ModelForm):
         widgets = {
             'first_name':
             TextInput(attrs={'class': 'form-control',
-                             'required': 'required'}),
+                             }),
             'last_name':
             TextInput(attrs={'class': 'form-control',
-                             'required': 'required'}),
+                             }),
             'email':
             EmailInput(attrs={'class': 'form-control',
-                              'required': 'required'}),
+                              }),
             'username':
             TextInput(attrs={'class': 'form-control'}),
             'is_active' :forms.HiddenInput(),
