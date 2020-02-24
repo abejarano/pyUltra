@@ -8,7 +8,6 @@ class FormTenderos(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for campo in self.fields:
             if campo != 'foto':
-                self.fields[campo].widget.attrs.update({'required': 'required'})
                 self.fields[campo].widget.attrs.update({'class': 'form-control'})
 
     class Meta:
@@ -26,7 +25,6 @@ class FormProductos(forms.ModelForm):
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
         for campo in self.fields:
-            self.fields[campo].widget.attrs.update({'required': 'required'})
             self.fields[campo].widget.attrs.update({'class': 'form-control'})
 
     class Meta:
