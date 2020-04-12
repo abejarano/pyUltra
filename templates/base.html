@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb18030">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Web Application Ultra</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
@@ -14,10 +13,8 @@
 <body>
 <!-- HK Wrapper -->
 	<div class="hk-wrapper hk-alt-nav hk-icon-nav">
-        
 
         {% include 'elements/menu.html' %}
-
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
@@ -88,10 +85,6 @@
 	<!-- Toastr JS -->
     <script src ="{% static 'vendors/jquery-toast-plugin/dist/jquery.toast.min.js' %}"></script>
     
-    <!-- Init JavaScript -->
-    <script src="{% static 'js/init.js' %}"></script>
-	 <script src="{% static 'js/dashboard-data.js' %}"></script>
-    
     <!-- Dropzone JavaScript -->
     <script src ="{% static 'vendors/dropzone/dist/dropzone.js' %}"></script>
     
@@ -108,29 +101,20 @@
     <script src ="{% static 'vendors/jquery-toggles/toggles.min.js' %}"></script>
     <script src="{% static 'js/toggle-data.js' %}"></script>
 
-    <!-- Data Table JavaScript -->
-    <script src ="{% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
-    <script src ="{% static 'vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
-    <script src ="{% static 'vendors/datatables.net-dt/js/dataTables.dataTables.min.js' %}"></script>
-    <script src ="{% static 'vendors/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
-    <script src ="{% static 'vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
-    <script src ="{% static 'vendors/datatables.net-buttons/js/buttons.flash.min.js' %}"></script>
     <script src ="{% static 'vendors/jszip/dist/jszip.min.js' %}"></script>
     <script src ="{% static 'vendors/pdfmake/build/pdfmake.min.js' %}"></script>
     <script src ="{% static 'vendors/pdfmake/build/vfs_fonts.js' %}"></script>
-    <script src ="{% static 'vendors/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
-    <script src ="{% static 'vendors/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
-    <script src ="{% static 'vendors/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
-    <script src="{% static 'js/dataTables-data.js' %}"></script>
+
+    <script src="{% static 'js/jquery.mask.min.js' %}"></script>
 
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
 <script>
     $(function() {
         $('select').selectpicker();
