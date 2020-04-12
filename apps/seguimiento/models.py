@@ -5,7 +5,7 @@ from apps.categorias.models import TipoProcesos, Situaciones
 from apps.gestion.models import Denuncias
 
 
-class Acesores(models.Model):
+class Asesores(models.Model):
     dni = models.CharField(max_length=30, unique=True, db_index=True, null=False, blank=False)
     nombre = models.CharField(max_length=100, null=False, blank=False)
     apellido = models.CharField(max_length=100, null=False, blank=False)
@@ -33,7 +33,7 @@ class Intervenciones(models.Model):
     fecha_legal = models.DateTimeField(null=True, blank=True)
     descripcion = models.TextField(null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
-    acesores = models.ForeignKey(Acesores, related_name='fk_interncion_acesores', on_delete=models.PROTECT)
+    asesores = models.ForeignKey(Asesores, related_name='fk_interncion_acesores', on_delete=models.PROTECT)
     denuncia = models.ForeignKey(Denuncias, related_name='fk_interncion_denuncias', on_delete=models.PROTECT)
     situacion = models.ForeignKey(Situaciones, related_name='fk_interncion_situaciones', on_delete=models.PROTECT)
     tipo_proceso = models.ForeignKey(TipoProcesos, related_name='fk_interncion_tipo_proceso', on_delete=models.PROTECT)
