@@ -72,6 +72,7 @@
                                     <th>Código</th>
                                     <th>Fecha</th>
                                     <th>tienda</th>
+                                    <th>Intervención</th>
                                     <th>Ver</th>
                                     <th>Imprimir</th>
                                     <th>Eliminar</th>
@@ -88,6 +89,13 @@
                                     </td>
                                     <td>
                                         {{object.tienda}}
+                                    </td>
+                                    <td>
+                                        <a href="/seguimiento/intervencion/{{object.id}}/registrar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                            <span class="btn-icon-wrap">
+                                                <i class="fa fa-gavel"></i>
+                                            </span>
+                                        </a>
                                     </td>
                                     <td>
                                         <a href="/gestion/denuncias/{{object.id}}/editar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
