@@ -5,7 +5,6 @@
     <div class="col-xl-12">
         <section class="hk-sec-wrapper">
             <h5 class="hk-sec-title">Intervención</h5>
-
             <hr>
             {% if form.errors %}
             <div class="alert alert-warning" role="alert">
@@ -21,72 +20,35 @@
                         {{form.acesores}}
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="Descripcion">Descripción</label>
-                        {{form.descripcion}}
-                    </div>
-                    <div class="col-md-6 form-group">
                         <label for="tipo">Tipo de Proceso</label>
                         {{form.tipo_proceso}}
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="Empresa">Empresa</label>
-                        <input class="form-control" id="Empresa" placeholder="Ingrese la empresa" type="text">
+                        {{form.empresa}}
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="Ciudad">Ciudad</label>
-                        <input class="form-control" id="Ciudad" placeholder="Ingrese la ciudad" type="text">
+                        {{form.ciudad}}
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="Fecha">Fecha y hora de Traslado</label>
-                        <input class="form-control" id="Fecha" placeholder="dd/mm/aaa --:--" type="text">
+                        {{form.fecha_traslado}}
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="Fecha">Para legal</label>
+                        {{form.fecha_legal}}
                     </div>
                     <div class="col-md-12 form-group">
-                        <label for="Fecha">Para legal</label>
-                        <input class="form-control" id="Fecha" placeholder="dd/mm/aaa --:--" type="text">
-                    </div>
-
-
-                </div>
-                <!--<div class="row">
-                    <div class="col-sm">
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label for="id_tendero">Seleccionar/ Gestionar tendero(s)</label>
-                                {{form.tendero}}
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <textarea class="form-control mt-15" rows="4" placeholder="Narrar los echos" name="hechos"></textarea>
-                            </div>
-                        </div>
-
+                        <label for="Descripcion">Descripción</label>
+                        {{form.descripcion}}
                     </div>
                 </div>
-                <hr>
-                <h6 class="form-group">Datos de la tienda, productos(s) y otros</h6>
-                <div class="row">
-                    <div class="col-lg-6 col-sm-6 form-group">
-                        <label for="pregunta">Seleccionar el/ los producto(s)</label>
-                        {{form.producto}}
-                    </div>
-                    <div class="col-lg-6 col-sm-6 form-group">
-                        <label for="tienda">Seleccionar la tienda</label>
-                        {{form.tienda}}
-                    </div>
-                    <div class="col-lg-6 col-sm-6 form-group">
-                        <label for="modalidad">Modalidad</label>
-                        {{form.modalidad}}
-                    </div>
-                    <div class="col-lg-6 col-sm-6 form-group">
-                        <label for="clase">Clase</label>
-                        {{form.clase}}
-                    </div>
-                </div>-->
                 <hr>
                 <button class="btn btn-danger" type="submit">Guardar información de la intervención</button>
-                <a href="/gestion/denuncias/registrar" class="btn-primary btn"> Nuevo</a>
-                <a href="/gestion/denuncias/listado" class="btn-success btn"> Listado</a>
             </form>
         </section>
     </div>
-    </section>
+</div>
+
     {% endblock %}
