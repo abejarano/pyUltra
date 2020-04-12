@@ -48,7 +48,7 @@ class Denuncias(models.Model):
     clase = models.ForeignKey(Clases, related_name='fk_denuncia_clase', on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
     class Meta:
         ordering = ['-id']
