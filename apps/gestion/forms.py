@@ -2,6 +2,8 @@ from django import forms
 from django.forms import FileInput, Select, SelectMultiple
 
 from .models import Tenderos, Productos, Denuncias
+from ..seguimiento.models import Asesores
+
 
 class FormTenderos(forms.ModelForm):
     def __init__(self,*args, **kwargs):
@@ -69,3 +71,14 @@ class FormDenuncias(forms.ModelForm):
                               }
                        ),
         }
+
+
+class FormAsesores(forms.ModelForm):
+    def __init__(self,*args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for campo in self.fields:
+            self.fields[campo].widget.attrs.update({'class': 'form-control'})
+
+    class Meta:
+        model = Asesores
+        fields = '__all__'

@@ -1,8 +1,7 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import  CreateView, ListView, UpdateView, DeleteView
 from .forms import *
+from ..seguimiento.models import Asesores
+
 
 class TenderosListado(ListView):
     template_name = 'gestion/tenderos-listado.html'
@@ -101,5 +100,34 @@ class DenunciasEliminar(DeleteView):
     def get_context_data(self, **kwargs):
         context = super(DenunciasEliminar, self).get_context_data(**kwargs)
         context['url_return'] = '/gestion/denuncias/listado'
+
+        return context
+
+
+class AsesoresRegistrar(CreateView):
+    model = Asesores
+    form_class = FormAsesores
+    template_name = 'gestion/asesores-registrar.html'
+    success_url = '/gestion/asesores/listado'
+
+class AsesoresListado(ListView):
+    model = Asesores
+    paginate_by = 20
+    template_name = 'gestion/asesores-listado.html'
+
+class AsesoresEditar(UpdateView):
+    model = Asesores
+    form_class = FormAsesores
+    template_name = 'gestion/asesores-registrar.html'
+    success_url = '/gestion/asesores/listado'
+
+class AsesoresEliminar(DeleteView):
+    model = Asesores
+    template_name = 'eliminar.html'
+    success_url = '/gestion/asesores/listado'
+
+    def get_context_data(self, **kwargs):
+        context = super(AsesoresEliminar, self).get_context_data(**kwargs)
+        context['url_return'] = '/gestion/asesores/listado'
 
         return context

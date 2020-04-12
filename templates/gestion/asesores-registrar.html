@@ -1,0 +1,51 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+            <h5 class="hk-sec-title">Registro de asesores</h5>
+            <!--<p class="mb-25">
+            <strong>(*)</strong> Datos Obligatorios. <strong>Formatos soportado:</strong> .jpg y .png - <strong>Tamaño recomendado:</strong> 1 MB 720px - <strong>Notas:</strong> Todos los valores se guardaran en mayusculas para mantener un solo formato uniforme.</p>
+            -->
+            <hr>
+            {% if form.errors %}
+            <div class="alert alert-warning" role="alert">
+              {{ form.errors }}
+            </div>
+            {% endif %}
+            <h6 class="form-group">Datos del Producto</h6>
+            <div class="row">
+                <div class="col-sm">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-4 form-group">
+                                <label for="codigo">DNI</label>
+                                {{form.dni}}
+                           </div>
+                            <div class="col-md-4 form-group">
+                                <label for="nombre">Nombre</label>
+                                {{form.nombre}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label for="apellido">Apellido</label>
+                                {{form.apellido}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label for="nombre">Teléfono</label>
+                                {{form.telefono}}
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label for="nombre">E-mail</label>
+                                {{form.email}}
+                            </div>
+                        </div>
+
+                        <hr>
+                        <button class="btn btn-danger" type="submit">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </section>    
+{% endblock %}

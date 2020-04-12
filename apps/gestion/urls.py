@@ -23,4 +23,9 @@ urlpatterns = [
     path('import/denuncias/', login_required(uploadDenuncias)),
     path('import/tiendas/', login_required(uploadTiendas)),
     path('import/productos/', login_required(uploadProductos)),
+
+    path('asesores/registrar', login_required(AsesoresRegistrar.as_view())),
+    path('asesores/listado', login_required(AsesoresListado.as_view())),
+    path('asesores/<pk>/editar', login_required(AsesoresEditar.as_view())),
+    path('asesores/<pk>/eliminar', login_required(AsesoresEliminar.as_view())),
 ]
