@@ -13,6 +13,7 @@
             {% endif %}
             <form method="post">
                 {% csrf_token %}
+                <input type="hidden" value="{{denuncia}}" name="denuncia">
                 <h6 class="form-group">Procesar intervención</h6>
                 <div class="row">
                     <div class="col-md-6 form-group">
@@ -35,6 +36,7 @@
                         <label for="Fecha">Fecha y hora de Traslado</label>
                         {{form.fecha_traslado}}
                     </div>
+
                     <div class="col-md-6 form-group">
                         <label for="Fecha">Para legal</label>
                         {{form.fecha_legal}}
@@ -51,4 +53,12 @@
     </div>
 </div>
 
-    {% endblock %}
+{% endblock %}
+{% block js %}
+<script>
+    $(function(){
+        $('#id_fecha_traslado').mask('00/00/0000 00:00');
+        $('#id_fecha_legal').mask('00/00/0000 00:00');
+    })
+</script>
+{% endblock %}
