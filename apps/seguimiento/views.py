@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 
 from apps.seguimiento.forms import FormIntervencion
 from apps.seguimiento.models import Intervenciones
@@ -36,3 +36,15 @@ class IntervencionEditar(UpdateView):
     form_class = FormIntervencion
     template_name = 'intervencion/intervencion-registrar.html'
     success_url = '/gestion/denuncias/listado'
+
+class IntervencionEliminar(DeleteView):
+    model = Intervenciones
+    template_name = 'eliminar.html'
+    success_url = '/gestion/denuncias/listado'
+
+    def get_context_data(self, **kwargs):
+        intervencion = Intervenciones.objects.get(pk=self.kwargs.get('pk'))
+        context = super(IntervencionEliminar, self).get_context_data(**kwargs)
+        context['url_return'] = '/seguimiento/intervencion/'+str(intervencion.denuncia)+'/listado'
+
+        return context
