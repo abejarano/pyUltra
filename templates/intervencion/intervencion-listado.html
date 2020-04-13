@@ -1,0 +1,138 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-12">
+        <section class="hk-sec-wrapper">
+
+        <div class="row">
+                <div class="col-sm">
+                    <!--<div>
+                        <form method="post" id="form-importar" enctype="multipart/form-data" action="/gestion/import/productos/">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="file" style="display: none" id="input-upload" name="file">
+                                    <button type="button" class="btn btn-sm btn-danger btn-wth-icon icon-wthot-bg mb-15" onclick="seleccionarArchivo()">
+                                        <span class="icon-label"><i class="fa fa-download"></i></span>
+                                        <span class="btn-text">Importar </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="mb-25">
+                                <strong>IMPORTAR PRODUCTOS:</strong> Se realiza mediante un archivo .csv. y debe contener los en siguientes campos en
+                                el orden respectivo:
+                            </p>
+                            <p class="mb-25">
+                                <STRONG>CÓDIGO,</STRONG>
+                                <STRONG>NOMBRE,</STRONG>
+                                <STRONG>MONTO,</STRONG>
+                                <STRONG>ÁREA,</STRONG>
+                                <STRONG>DESCRIPCIÓN</STRONG>
+                            </p>
+                        </form>
+                    </div>-->
+
+                </div>
+            </div>
+            <h5 class="hk-sec-title">Todos las intervenciones de la denuncia #{{denuncia}}</h5>
+            
+            <div class="row">
+                <div class="col-sm">
+                    <div class="table-wrap mb-5">
+                     <div class="table-responsive">
+                        <table id="datable_1" class="table mb-0">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Asesor</th>
+                                    <th>Empresa</th>
+                                    <th>Fiscalia</th>
+                                    <th>Fiscalia Superior</th>
+                                    <th>Fecha Traslado </th>
+                                    <th>Fecha Legal</th>
+                                    <th>Ver</th>
+                                    <th>Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for object in object_list %}
+                                <tr>
+                                    <td>
+                                        {{object.asesores}}
+                                    </td>
+                                    <td>
+                                        {{object.empresa}}
+                                    </td>
+                                    <td>
+                                        {{object.fiscalia}}
+                                    </td>
+                                    <td>
+                                        {{object.fiscalia_superior}}
+                                    </td>
+                                    <td>
+                                        {{object.fecha_traslado |date:'M d, Y' }}
+                                    </td>
+                                    <td>
+                                        {{object.fecha_legal |date:'M d, Y' }}
+                                    </td>
+                                    <td>
+                                        <a href="/seguimiento/intervencion/{{object.id}}/editar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                            <span class="btn-icon-wrap">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/gestion/productos/{{object.id}}/eliminar" class="btn btn-icon btn-icon-circle btn-secondary btn-icon-style-3">
+                                            <span class="btn-icon-wrap">
+                                                <i class="fa fa-trash"></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            
+                        </table>
+                         {% if is_paginated %}
+                            <br>
+                            <div class="row justify-content-center">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination">
+                                        {% if page_obj.has_previous %}
+                                          <li class="page-item">
+                                              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                                  &laquo; Anterior
+                                              </a>
+                                          </li>
+                                        {% else %}
+                                          <li class="disabled"><span class="page-link">&laquo; Anterior</span></li>
+                                        {% endif %}
+                                        {% for i in page_obj.paginator.page_range %}
+                                          {% if page_obj.number == i %}
+                                            <li class="page-item active">
+                                                <span class="page-link">{{ i }}
+                                                    <span class="sr-only">(current)</span>
+                                                </span>
+                                            </li>
+                                          {% else %}
+                                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                          {% endif %}
+                                        {% endfor %}
+                                        {% if page_obj.has_next %}
+                                          <li><a class="page-link" href="?page={{ page_obj.next_page_number }}"> Siguiente &raquo;</a></li>
+                                        {% else %}
+                                          <li class="page-item disabled"><span class="page-link">Siguiente&raquo;</span></li>
+                                        {% endif %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+    </div>
+{% endblock %}
