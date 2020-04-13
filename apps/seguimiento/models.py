@@ -39,7 +39,7 @@ class Intervenciones(models.Model):
     tipo_proceso = models.ForeignKey(TipoProcesos, related_name='fk_interncion_tipo_proceso', on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.pk
+        return str(self.pk)
 
     class Meta:
         ordering = ['-created_on']
