@@ -34,6 +34,8 @@ class FormProductos(forms.ModelForm):
         fields = '__all__'
 
 class FormDenuncias(forms.ModelForm):
+    productos_seleccionados = forms.TextInput()
+
     def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
         for campo in self.fields:

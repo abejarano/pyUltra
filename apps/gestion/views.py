@@ -1,5 +1,12 @@
-from django.views.generic import  CreateView, ListView, UpdateView, DeleteView
+import json
+from decimal import Decimal
+
+from django.db import IntegrityError, transaction
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, TemplateView, DetailView
 from .forms import *
+from .models import DenunciasProducto
 from ..seguimiento.models import Asesores
 
 
@@ -80,6 +87,32 @@ class DenunciasRegistrar(CreateView):
     template_name = 'gestion/denuncias-registrar.html'
     success_url = '/gestion/denuncias/listado'
 
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            try:
+                with transaction.atomic():
+                    denuncia = form.save()
+                    denuncia.save()
+
+                    for item in json.loads(request.POST.get("productos_seleccionados")):
+                        DenunciasProducto(
+                            denuncia=denuncia,
+                            producto=Productos.objects.get(id=item['producto']),
+                            cantidad=Decimal(item['cantidad'])
+                        ).save()
+
+                    return HttpResponseRedirect(self.success_url)
+            except IntegrityError:
+                return self.form_invalid(form)
+
+        return render(request, self.template_name, self.form_class)
+
+    def get_context_data(self, **kwargs):
+        context = super(DenunciasRegistrar, self).get_context_data(**kwargs)
+        context['productos'] = Productos.objects.all()
+        return  context
+
 class DenunciasEditar(UpdateView):
     model = Denuncias
     form_class = FormDenuncias
@@ -130,4 +163,15 @@ class AsesoresEliminar(DeleteView):
         context = super(AsesoresEliminar, self).get_context_data(**kwargs)
         context['url_return'] = '/gestion/asesores/listado'
 
+        return context
+
+
+class ImprimirDenuncia(DetailView):
+    template_name = 'reportes/reporte-denuncia.html'
+    model = Denuncias
+    context_object_name = 'denuncia'
+
+    def get_context_data(self, **kwargs):
+        context = super(ImprimirDenuncia, self).get_context_data(**kwargs)
+        context['productos'] = self.object.producto.all()
         return context

@@ -28,4 +28,6 @@ urlpatterns = [
     path('asesores/listado', login_required(AsesoresListado.as_view())),
     path('asesores/<pk>/editar', login_required(AsesoresEditar.as_view())),
     path('asesores/<pk>/eliminar', login_required(AsesoresEliminar.as_view())),
+
+    path('imprimir/<pk>/', login_required(ImprimirDenuncia.as_view())),
 ]
