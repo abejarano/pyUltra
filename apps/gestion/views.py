@@ -1,14 +1,18 @@
 import json
 from decimal import Decimal
+from time import timezone
 
 from django.db import IntegrityError, transaction
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, TemplateView, DetailView
 from .forms import *
 from .models import DenunciasProducto
 from ..seguimiento.models import Asesores
-
+from django.conf import settings
+from django_weasyprint import WeasyTemplateResponseMixin
+from django_weasyprint.views import CONTENT_TYPE_PNG
 
 class TenderosListado(ListView):
     template_name = 'gestion/tenderos-listado.html'
@@ -137,7 +141,6 @@ class DenunciasEditar(UpdateView):
             except IntegrityError as excepcion:
                 form.add_error(_('Error : %(value)s' % excepcion.__cause__))
                 # return self.form_invalid(form)
-        print(form)
         return render(request, 'gestion/denuncias-registrar.html', {'form': form})
     
     def get_context_data(self, **kwargs):
@@ -203,4 +206,14 @@ class ImprimirDenuncia(DetailView):
         context = super(ImprimirDenuncia, self).get_context_data(**kwargs)
         context['tenderos'] = self.object.tendero.all()
         context['productos'] = DenunciasProducto.objects.filter(denuncia=self.object)
+
         return context
+
+
+class DenunciaPDF(WeasyTemplateResponseMixin, ImprimirDenuncia):
+    pdf_stylesheets = [
+        settings.BASE_DIR + '/static/css/style.css',
+        settings.BASE_DIR + '/static/vendors/bootstrap/dist/css/bootstrap.min.css',
+    ]
+    pdf_attachment = False
+    pdf_filename = 'foo.pdf'

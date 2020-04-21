@@ -1,6 +1,5 @@
-{% extends '../base.html' %}
+{% include '../elements/style.html' %}
 
-{% block content %}
 <section id="denuncia">
     <div class="hk-pg-header align-items-top">
     <div>
@@ -15,7 +14,7 @@
                 <div class="row">
                     {% for tendero in tenderos %}
                         <div class="col-lg-4 text-center">
-                            <img src="/media/{{tendero.foto}}" width="180" class="img-fluid circle" alt="img">
+                            <img src="/media/{{tendero.foto}}" width="20%" class="img-fluid circle" alt="img">
                             <h3>{{tendero.nombre}} {{tendero.apellido}}</h3>
 
                         </div>
@@ -84,11 +83,11 @@
 
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <strong>Area: {{producto.producto.area}}</strong>
+                                <strong>Area:</strong> {{producto.producto.area}}
 
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <strong>Descripción: {{producto.producto.descripcion}}</strong>
+                                <strong>Descripción:</strong> {{producto.producto.descripcion}}
 
                             </li>
                         </ul>
@@ -166,4 +165,3 @@
     </div>
 </section>
 
-{% endblock %}
