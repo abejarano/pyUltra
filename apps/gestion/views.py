@@ -201,5 +201,6 @@ class ImprimirDenuncia(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ImprimirDenuncia, self).get_context_data(**kwargs)
-        context['productos'] = self.object.producto.all()
+        context['tenderos'] = self.object.tendero.all()
+        context['productos'] = DenunciasProducto.objects.filter(denuncia=self.object)
         return context
