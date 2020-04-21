@@ -94,13 +94,7 @@ class DenunciasRegistrar(CreateView):
                 with transaction.atomic():
                     denuncia = form.save()
                     denuncia.save()
-
-                    for item in json.loads(request.POST.get("productos_seleccionados")):
-                        DenunciasProducto(
-                            denuncia=denuncia,
-                            producto=Productos.objects.get(id=item['producto']),
-                            cantidad=Decimal(item['cantidad'])
-                        ).save()
+                    DenunciarProductos(denuncia, request.POST.get("productos_seleccionados"))
 
                     return HttpResponseRedirect(self.success_url)
             except IntegrityError:
@@ -113,11 +107,45 @@ class DenunciasRegistrar(CreateView):
         context['productos'] = Productos.objects.all()
         return  context
 
+def DenunciarProductos(obj_denuncia, productos_seleccionados):
+    for item in json.loads(productos_seleccionados):
+        print(item['producto'])
+        DenunciasProducto(
+            denuncia=obj_denuncia,
+            producto=Productos.objects.get(id=item['producto']),
+            cantidad=Decimal(item['cantidad'])
+        ).save()
+
 class DenunciasEditar(UpdateView):
     model = Denuncias
     form_class = FormDenuncias
     template_name = 'gestion/denuncias-registrar.html'
     success_url = '/gestion/denuncias/listado'
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, instance=self.get_object())
+        #form = self.form_class(request.POST)
+        if form.is_valid():
+            try:
+                with transaction.atomic():
+                    denuncia = form.save()
+                    denuncia.save()
+                    DenunciasProducto.objects.filter(denuncia=denuncia).delete()
+                    DenunciarProductos(self.get_object(), request.POST.get("productos_seleccionados"))
+
+                    return HttpResponseRedirect(self.success_url)
+            except IntegrityError as excepcion:
+                form.add_error(_('Error : %(value)s' % excepcion.__cause__))
+                # return self.form_invalid(form)
+        print(form)
+        return render(request, 'gestion/denuncias-registrar.html', {'form': form})
+    
+    def get_context_data(self, **kwargs):
+        context = super(DenunciasEditar, self).get_context_data(**kwargs)
+        context['producto_denunciados'] = DenunciasProducto.objects.filter(denuncia=self.object)
+        context['productos'] = Productos.objects.all()
+        return context
+
 
 
 class DenunciasListado(ListView):

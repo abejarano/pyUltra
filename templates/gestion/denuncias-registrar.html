@@ -23,7 +23,11 @@
                                 {{form.tendero}}
                             </div>
                             <div class="col-md-12 form-group">
+                                {% if form.hechos.value != None %}
+                                <textarea class="form-control mt-15" rows="4" placeholder="Narrar los echos" name="hechos">{{form.hechos.value}}</textarea>
+                                {% else %}
                                 <textarea class="form-control mt-15" rows="4" placeholder="Narrar los echos" name="hechos"></textarea>
+                                {% endif %}
                             </div>
                         </div>
 
@@ -69,7 +73,17 @@
                         </tr>
                     </thead>
                     <tbody id="body-table">
-
+                    {% for producto in producto_denunciados %}
+                        <tr id="{{producto.id}}">
+                            <td>{{producto.producto.nombre}}</td>
+                            <td>{{producto.cantidad}}</td>
+                            <td>
+                                <div class="btn-primary rounded-8 text-center" onclick="deleteProduct({{producto.id}})">
+                                    <i class="fa fa-trash"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
                 <input type="hidden" id="productos_seleccionados" name="productos_seleccionados">
@@ -120,6 +134,14 @@
 <script>
     var jsonProduct = [];
     $(function(){
+        {% for producto in producto_denunciados %}
+            jsonProduct.push({
+                id:'{{producto.id}}',
+                producto: '{{producto.producto.id}}',
+                cantidad: '{{producto.cantidad}}',
+            });
+        {% endfor %}
+        console.log(JSON.stringify(jsonProduct));
         $('#makeAddProduct').click(function(){
             if ($('#producto').val() == "") {
                 toastr.warning("Por favor seleccione un producto");
@@ -129,23 +151,37 @@
                 toastr.warning("Por favor ingrese una cantidad");
                 return;
             }
-
-            var xTable = "<tr>" +
+            var idRound = Math.floor((Math.random() * 999) + 100);
+            var xTable = "<tr id='"+idRound+"'>" +
                 "<td>"+$('select[id=producto] option').filter(':selected').text()+"</td>" +
                 "<td>" + $('#cantidad').val()+"</td>" +
+                "<td><div class=\"btn-primary rounded-8 text-center\" onclick=\"deleteProduct("+idRound+")\">\n" +
+                "                                    <i class=\"fa fa-trash\"></i>\n" +
+                "                                </div></td>" +
             "</tr>";
             $('#body-table').append(xTable);
             jsonProduct.push({
+                id: idRound,
                 producto: $('#producto').val(),
                 cantidad: $('#cantidad').val(),
             });
             $('#productos_seleccionados').val( JSON.stringify(jsonProduct));
-            console.log(JSON.stringify(jsonProduct));
             $('#cantidad').val("");
         });
     });
     function addProduct() {
         $('#modal-product').modal('show');
+    }
+
+    function deleteProduct(product_id) {
+        for (const key in jsonProduct) {
+          const element = jsonProduct[key];
+          if (product_id == element.id) {
+            jsonProduct.splice(Number(key), 1);
+            $('#' + product_id).remove();
+            $('#productos_seleccionados').val( JSON.stringify(jsonProduct));
+          }
+        }
     }
 </script>
 {% endblock %}
