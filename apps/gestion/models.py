@@ -54,7 +54,7 @@ class Denuncias(models.Model):
 
 
 class DenunciasProducto(models.Model):
-    denuncia = models.ForeignKey(Denuncias, on_delete=models.PROTECT, related_name='fk_denuncia')
+    denuncia = models.ForeignKey(Denuncias, on_delete=models.CASCADE, related_name='fk_denuncia')
     producto = models.ForeignKey(Productos, on_delete=models.PROTECT, related_name='fk_denuncia_producto')
     cantidad = models.IntegerField(null=False, blank=False)
     monto = models.DecimalField(max_digits=19, decimal_places=3, default=0, null=False, blank=False)
