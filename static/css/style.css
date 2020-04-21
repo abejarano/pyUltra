@@ -28,9 +28,12 @@ html, body, div, span, applet, object, iframe, p, pre, a, abbr, acronym, address
   border: 0;
   font-size: 100%;
   font: inherit;
+
   font-family: "Poppins-Regular";
   vertical-align: baseline; }
-
+html, body {
+  background-color: white !important;
+}
 h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins-Medium" !important;
 }
