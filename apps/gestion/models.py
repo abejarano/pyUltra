@@ -43,12 +43,25 @@ class Denuncias(models.Model):
     estado = models.CharField(max_length=80, null=True, blank=True)
     tendero = models.ManyToManyField(Tenderos)
     tienda = models.ForeignKey(Tiendas, related_name='fk_denuncia_tienda', on_delete=models.PROTECT)
-    producto = models.ManyToManyField(Productos)
     modalidad = models.ForeignKey(Modalidades, related_name='fk_denuncia_modalidad', on_delete=models.PROTECT)
     clase = models.ForeignKey(Clases, related_name='fk_denuncia_clase', on_delete=models.PROTECT)
 
     def __str__(self):
         return str(self.id)
+
+    class Meta:
+        ordering = ['-id']
+
+
+class DenunciasProducto(models.Model):
+    denuncia = models.ForeignKey(Denuncias, on_delete=models.PROTECT, related_name='fk_denuncia')
+    producto = models.ForeignKey(Productos, on_delete=models.PROTECT, related_name='fk_denuncia_producto')
+    cantidad = models.IntegerField(null=False, blank=False)
+    monto = models.DecimalField(max_digits=19, decimal_places=3, default=0, null=False, blank=False)
+
+    def save(self, *args, **kwargs):
+        self.monto = self.producto.monto * self.cantidad
+        super(DenunciasProducto, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['-id']
