@@ -1,0 +1,172 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<section id="denuncia">
+    <div class="hk-pg-header align-items-top">
+    <div>
+        <h2 class="hk-pg-title font-weight-600 mb-10">Reporte de Denuncia</h2>
+    </div>
+    </div>
+    <!-- /Title -->
+    <!-- Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="hk-sec-wrapper">
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                    </div>
+                    <div class="col-lg-4">
+
+                        <img src="dist/img/img-thumb.jpg" class="img-fluid circle" alt="img">
+                        <h3>Génesis Hernandez</h3>
+
+                    </div>
+                    <div class="col-lg-8">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Nombre:</strong> Génesis
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Apellido:</strong> Hernandez
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Edad:</strong> 24 años
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>DNI:</strong> 10.444.323
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Nacionalidad:</strong> Venezolana
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Sexo:</strong> Femenino
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Correo eléctronico:</strong> gene@hotmail.com
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Teléfono:</strong> 0414 324 32 22
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Dirección:</strong> Urb. Santa Rita
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hk-sec-wrapper">
+                <h3>Producto</h3>
+                <div class="row">
+                    {% for producto in productos %}
+
+                    <div class="col-md-6 mt-4">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Código: {{producto.id}}</strong>
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Nombre:</strong> {{producto.nombre}}
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Area: {{producto.area}}</strong>
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Descripción: {{producto.descripcion}}</strong>
+
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-6 mt-4">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Monto:</strong>45.4544
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Cantidad:</strong> 7
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Total:</strong> 45.45433
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="hk-sec-wrapper">
+                <h3>Datos de la Denuncia</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Nro.Código:</strong> {{denuncia.id}}
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Fecha:</strong> {{denuncia.fecha_denuncia}}
+                            </li>
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Tienda:</strong> {{denuncia.tienda}}
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Propietario:</strong> {{denuncia.tienda.propietario}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Clase:</strong> {{denuncia.clase}}
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Modalidad:</strong> {{denuncia.modalidad}}
+
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Hechos:</strong> {{denuncia.hechos}}
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
