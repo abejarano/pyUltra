@@ -42,6 +42,8 @@
 
     </div>
     <!-- /HK Wrapper -->
+{% block modal %}
+{% endblock modal %}
 </body>
     <!-- jQuery -->
     <script src ="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
@@ -84,7 +86,7 @@
     <script src ="{% static 'vendors/peity/jquery.peity.min.js' %}"></script>
    
 	<!-- Toastr JS -->
-    <script src ="{% static 'vendors/jquery-toast-plugin/dist/jquery.toast.min.js' %}"></script>
+    <script src ="{% static 'toastr.js' %}"></script>
     
     <!-- Dropzone JavaScript -->
     <script src ="{% static 'vendors/dropzone/dist/dropzone.js' %}"></script>
@@ -116,6 +118,11 @@
 
 <script>
     $(function() {
+        toastr.options = {
+            progressBar: true,
+            timeOut: 8000,
+            positionClass: "toast-bottom-right",
+        };
         $('select').selectpicker();
     })
 </script>
