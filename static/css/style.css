@@ -28,7 +28,6 @@ html, body, div, span, applet, object, iframe, p, pre, a, abbr, acronym, address
   border: 0;
   font-size: 100%;
   font: inherit;
-
   font-family: "Poppins-Regular";
   vertical-align: baseline; }
 html, body {
@@ -20650,3 +20649,36 @@ table.dataTable {
   /* IE11 */ }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.list-group-item:first-child {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+.list-group-item {
+    border-color: #e0e3e4;
+}
+.align-items-center {
+    -ms-flex-align: center !important;
+    align-items: center !important;
+}
+.justify-content-between {
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+}
+.d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+        border-top-color: rgba(0, 0, 0, 0.125);
+        border-right-color: rgba(0, 0, 0, 0.125);
+        border-bottom-color: rgba(0, 0, 0, 0.125);
+        border-left-color: rgba(0, 0, 0, 0.125);
+}

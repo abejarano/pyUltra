@@ -1,5 +1,8 @@
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.conf import settings
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
+from django_weasyprint import WeasyTemplateResponseMixin
 
+from apps.gestion.models import DenunciasProducto
 from apps.seguimiento.forms import FormIntervencion
 from apps.seguimiento.models import Intervenciones
 
@@ -48,3 +51,20 @@ class IntervencionEliminar(DeleteView):
         context['url_return'] = '/seguimiento/intervencion/'+str(intervencion.denuncia)+'/listado'
 
         return context
+
+class ImprimirIntervencion(DetailView):
+    template_name = 'reportes/reporte-intervencion.html'
+    model = Intervenciones
+    context_object_name = 'intervencion'
+
+    def get_context_data(self, **kwargs):
+        context = super(ImprimirIntervencion, self).get_context_data(**kwargs)
+        context['tenderos'] = self.object.denuncia.tendero.all()
+        return context
+
+class IntervencionPDF(WeasyTemplateResponseMixin, ImprimirIntervencion):
+    pdf_stylesheets = [
+        settings.BASE_DIR + '/static/css/style.css',
+    ]
+    pdf_attachment = False
+    pdf_filename = 'intervencion.pdf'

@@ -11,14 +11,14 @@
     <div class="row">
         <div class="col-lg-12">
             <section class="hk-sec-wrapper">
-                <div class="row">
+                <div class="row" style=" display: flex; flex-wrap: wrap;">
                     {% for tendero in tenderos %}
-                        <div class="col-lg-4 text-center">
-                            <img src="/media/{{tendero.foto}}" width="20%" class="img-fluid circle" alt="img">
+                        <div style="width: 30%;" class="col-lg-4 text-center">
+                            <img src="/media/{{tendero.foto}}" style="width: 140px" class="img-fluid circle" alt="img">
                             <h3>{{tendero.nombre}} {{tendero.apellido}}</h3>
 
                         </div>
-                        <div class="col-lg-8">
+                        <div style="width: 70%;" class="col-lg-8">
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <strong>Nombre:</strong> {{tendero.nombre}}

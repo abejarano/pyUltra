@@ -1,0 +1,203 @@
+
+<div class="hk-pg-header align-items-top">
+    <div>
+        <h2 class="hk-pg-title font-weight-600 mb-10">Reporte de Intervenciones</h2>
+
+    </div>
+</div>
+<!-- /Title -->
+<!-- Row -->
+
+<section class="hk-sec-wrapper">
+    <table style="width: 100%">
+    {% for tendero in tenderos %}
+        <tr>
+            <td style="width: 35%">
+                <div class="text-center">
+                    <img src="/media/{{tendero.foto}}" style="width: 80px" class="img-fluid circle" alt="img">
+                    <h4>{{tendero.nombre}} {{tendero.apellido}}</h4>
+                </div>
+            </td>
+            <td style="width: 65%">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Nombre:</strong> {{tendero.nombre}}
+
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Apellido:</strong> {{tendero.apellido}}
+
+                    </li>
+                    <!--<li class="list-group-item align-items-center">
+                        <strong>Edad:</strong> 24 años
+
+                    </li>-->
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>DNI:</strong> {{tendero.dni}}
+
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Nacionalidad:</strong> {{tendero.nacionalidad}}
+
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Sexo:</strong> {{tendero.sexo}}
+
+                    </li>
+                    <!--<li class="list-group-item align-items-center">
+                        <strong>Correo eléctronico:</strong> gene@hotmail.com
+
+                    </li>-->
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Teléfono:</strong> {{tendero.telefono}}
+
+                    </li>
+                    <li class="list-group-item align-items-center">
+                        <strong>Dirección:</strong>
+                        <p>{{tendero.direccion}}</p>
+
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+</section>
+
+<section class="hk-sec-wrapper">
+    <h3>Datos de la denuncia</h3>
+    <table style="width: 100%">
+        <tbody>
+            <tr>
+            <td width="50%">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Código:</strong> {{intervencion.denuncia.id}}
+
+                    </li>
+                    <li class="list-group-item align-items-center">
+                        <strong style="width: 100%">Fecha:</strong> <br>
+                        <p>{{intervencion.denuncia.fecha_denuncia}}</p>
+
+                    </li>
+                    <li class="list-group-item align-items-center">
+                        <strong>Moalidad:</strong>
+                        <p>{{intervencion.denuncia.modalidad}}</p>
+
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>Clase:</strong> {{intervencion.denuncia.clase}}
+
+                    </li>
+                    <li class="list-group-item align-items-center">
+                        <strong>Hechos:</strong>
+                        <p>{{intervencion.denuncia.hechos}}</p>
+
+                    </li>
+
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="hk-sec-wrapper">
+    <h3>Datos de la Intervención</h3>
+    <table style="width: 100%">
+        <tbody>
+            <tr>
+                <td style="width: 45%">
+                    <ul class="list-group">
+                        <li class="list-group-item align-items-center">
+                            <strong>Fecha de la Intervención:</strong> <br />
+                            <p>{{intervencion.created_on}}</p>
+
+                        </li>
+                        <li class="list-group-item align-items-center">
+                            <strong>Translado:</strong>
+                            <p>{{intervencion.fecha_traslado}}</p>
+
+                        </li>
+                        <li class="list-group-item align-items-center">
+                            <strong>Asesores:</strong>
+                            <p>{{intervencion.asesores}}</p>
+
+                        </li>
+
+                        <li class="list-group-item align-items-center">
+                            <strong>Tipo de proceso:</strong>
+                            <p>{{intervencion.tipo_proceso}}</p>
+
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Empresa:</strong> {{intervencion.empresa}}
+
+                        </li>
+                        <li class="list-group-item align-items-center">
+                            <strong>Paralegal:</strong>
+                            <p>{{intervencion.fecha_legal}}</p>
+
+                        </li>
+                        <li class="list-group-item align-items-center">
+                            <strong>Sede Policial:</strong>
+                            <p>{{intervencion.sede_policial}}</p>
+
+                        </li>
+                    </ul>
+                </td>
+                <td style="width: 45%">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Fiscalia:</strong> {{intervencion.fiscalia}}
+
+                        </li>
+                        <li class="list-group-item align-items-center">
+                            <strong>Fiscalia superior:</strong> {{intervencion.fiscalia_superior}}
+
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Juzgado paz:</strong> {{intervencion.juez_paz}}
+
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Juzgado penal:</strong> {{intervencion.juezgado_penal}}
+
+                        </li>
+                        <li class="list-group-item align-items-center">
+                            <strong>Reparación civil:</strong>
+                            <p>{{intervencion.reparacion_civil}}</p>
+
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Estado RC:</strong> {{intervencion.estado_rc}}
+
+                        </li>
+                        <li class="list-group-item align-items-center">
+                            <strong>Situación:</strong>
+                            <p>{{intervencion.situacion}}</p>
+
+                        </li>
+
+                    </ul>
+
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    <br>
+     <ul class="list-group m-0 p-0">
+         <li>
+             <strong>Descripción:</strong>
+         </li>
+        <li class="list-group-item align-items-center">
+            {{intervencion.descripcion}}
+
+        </li>
+     </ul>
+</section>
