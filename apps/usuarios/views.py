@@ -7,11 +7,20 @@ from django.contrib import messages
 # Create your views here.
 from django.views.generic import TemplateView, CreateView, ListView, DeleteView
 
+from apps.gestion.models import Tenderos, Denuncias
+from apps.seguimiento.models import Intervenciones
 from apps.usuarios.forms import UserCreateForm
+
+def getTotalData():
+    context = {}
+    context['total_tenderos'] = Tenderos.objects.count()
+    context['total_denuncias'] = Denuncias.objects.count()
+    context['total_intervenciones'] = Intervenciones.objects.count()
+    return context
 
 def Index(request):
     if request.user.is_authenticated:
-        return render(request, 'home.html')
+        return render(request, 'home.html', getTotalData())
     else:
         if request.method == 'POST':
 
