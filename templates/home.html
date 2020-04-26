@@ -80,9 +80,9 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Día', 'Semana Pasada', 'Semana Actual'],
-                ['Domingo', 1000, 400],
-                ['Lunes', 1000, 400],
-                ['Martes', 1000, 400],
+                ['Domingo', 700, 400],
+                ['Lunes', 1000, 1400],
+                ['Martes', 1200, 1500],
                 ['Miercoles', 1000, 400],
                 ['Jueves', 1000, 400],
                 ['Viernes', 1000, 400],
@@ -97,7 +97,7 @@
                 bars: 'vertical', // Required for Material Bar Charts.
                 hAxis: {format: 'decimal'},
                 height: 400,
-                colors: ['#1b9e77', '#d95f02']
+                colors: ['#1b9e77', '#00acf0']
             };
 
             var chart = new google.charts.Bar(document.getElementById('grafico'));
