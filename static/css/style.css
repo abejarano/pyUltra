@@ -20682,3 +20682,15 @@ table.dataTable {
         border-bottom-color: rgba(0, 0, 0, 0.125);
         border-left-color: rgba(0, 0, 0, 0.125);
 }
+
+.border-left-primary {
+    border-left: .25rem solid #ab26aa!important;
+}
+
+.border-left-success {
+    border-left: .25rem solid #1cc88a!important;
+}
+
+.border-left-danger {
+    border-left: .25rem solid red !important;
+}
