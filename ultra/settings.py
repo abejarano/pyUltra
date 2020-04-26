@@ -23,8 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'pqwxx-@b4if4n4=-(uk!j&+@mylgjyu4!b%akr#$btuu3+@6m5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-DEV = True
+DEBUG = False
+DEV = False
 ALLOWED_HOSTS = ['*']
 
 
@@ -114,7 +114,7 @@ LOGIN_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'contenedores')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -142,9 +142,9 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'db_ultra',
-            'USER': 'postgres',
-            'PASSWORD': '1qaz2wsx2019',
+            'USER': 'user_admindb',
+            'PASSWORD': 'P@ssw0rd2020c0r0n4',
             'HOST': '127.0.0.1',
-            'PORT': 5432,
+            'PORT': '5432'
         }
     }
