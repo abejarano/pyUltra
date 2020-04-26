@@ -30,7 +30,7 @@ class Intervenciones(models.Model):
     empresa = models.CharField(max_length=100, null=False, blank=False)
     ciudad = models.CharField(max_length=100, null=False, blank=False)
     fecha_traslado = models.DateTimeField(null=True, blank=True)
-    fecha_legal = models.DateTimeField(null=True, blank=True)
+    fecha_legal = models.DateTimeField(null=True, blank=True, verbose_name='Fecha para legal')
     descripcion = models.TextField(null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
     asesores = models.ForeignKey(Asesores, related_name='fk_interncion_acesores', on_delete=models.PROTECT)
