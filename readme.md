@@ -13,7 +13,7 @@
 $:\ pip3 install -r requirements.txt
 $:\ pip3 install gunicorn
 ```
-### Crear el arquivo ultra.service /etc/systemd/system/
+### Crear el archivo ultra.service /etc/systemd/system/
 ``` bash
 [Unit]
 Description=Ultra daemon
@@ -71,6 +71,4 @@ $:\ python3 manage.py createsuperuser
 ```
 $:\ python3 manage.py runserver
 ```
-
-# IMPORTANTE:
 
