@@ -1,10 +1,3 @@
-# Librerias
-
-* Python 3.6
-* Django 3
-* mysqlclient 1.4.6
-* WeasyPrint
-
 # ¿Cómo crear el ambiente de desarrollo?
 
 1. Deberas tener instalado python 3.6 y pip3.
@@ -17,6 +10,7 @@
 
 ### Instalar y configurar Gunicorn para crear un servicio de nuestro proyecto.
 ``` bash
+$:\ pip3 install -r requirements.txt
 $:\ pip3 install gunicorn
 ```
 ### Crear el arquivo ultra.service /etc/systemd/system/
@@ -27,7 +21,7 @@ After=network.target
 
 [Service]
 User=root
-Group=www-data
+Group=nginx
 WorkingDirectory=/applications/pyUltra
 ExecStart=/usr/bin/gunicorn \
           --access-logfile - \
@@ -66,6 +60,7 @@ server {
     }
     
 }
+```
 
 # Crear un usuario de prueba para el administrador y ejecutar el sistema en desarrollo
 
@@ -76,3 +71,6 @@ $:\ python3 manage.py createsuperuser
 ```
 $:\ python3 manage.py runserver
 ```
+
+# IMPORTANTE:
+
