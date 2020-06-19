@@ -28,7 +28,7 @@ def dataGrafico(request):
     now = now.strftime("%Y-%m-%d")
     cursor = connection.cursor()
 
-    cursor = connection.cursor("select to_char(fecha_denuncia, 'DD-MM-YYYY') as fecha, count(id) as cantidad "
+    cursor.execute("select to_char(fecha_denuncia, 'DD-MM-YYYY') as fecha, count(id) as cantidad "
                                 "from gestion_denuncias "
                                "WHERE to_char(fecha_denuncia, 'YYYY-MM-DD') BETWEEN '"+after+"' AND '"+now+"' "
                                 "GROUP BY to_char(fecha_denuncia, 'DD-MM-YYYY')")
