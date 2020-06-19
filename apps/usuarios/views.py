@@ -4,15 +4,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import connection
-from django.db.models import Count, Func, F, Value, DateField
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
 # Create your views here.
-from django.utils.timezone import now
-from django.views.generic import TemplateView, CreateView, ListView, DeleteView
-from requests import Response
+from django.views.generic import CreateView, ListView, DeleteView
 
 from apps.gestion.models import Tenderos, Denuncias
 from apps.seguimiento.models import Intervenciones
