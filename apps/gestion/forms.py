@@ -36,43 +36,11 @@ class FormProductos(forms.ModelForm):
 class FormDenuncias(forms.ModelForm):
     productos_seleccionados = forms.TextInput()
 
-    def __init__(self,*args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for campo in self.fields:
-            if campo != 'tendero' and campo != 'producto' and campo != 'tienda' and campo != 'modalidad' and campo != 'clase':
-                self.fields[campo].widget.attrs.update({'class': 'form-control'})
-
     class Meta:
         model = Denuncias
         # fields = '__all__'
         exclude = ['fecha_denuncia']
-        widgets = {
-            'tendero':
-                SelectMultiple(attrs={'class': 'form-control selectpicker',
-                                      'data-live-search': 'true'
-                                    }
-                                ),
-            'producto':
-                SelectMultiple(attrs={'class': 'form-control selectpicker',
-                                      'data-live-search': 'true'
-                                    }
-                                ),
-            'tienda':
-                Select(attrs={'class': 'form-control selectpicker',
-                              'data-live-search': 'true'
-                              }
-                       ),
-            'modalidad':
-                Select(attrs={'class': 'form-control selectpicker',
-                              'data-live-search': 'true'
-                              }
-                       ),
-            'clase':
-                Select(attrs={'class': 'form-control selectpicker',
-                              'data-live-search': 'true'
-                              }
-                       ),
-        }
+
 
 
 class FormAsesores(forms.ModelForm):
